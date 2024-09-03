@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Audiowide', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  color: white;
+  width: 100dvw;
+  overflow-x: hidden;
+  height: 100%;
+  background: #000;
+  border-color: #3b3b3b;
+  user-select: none;
+  backdrop-filter: blur(2em);
+  -webkit-backdrop-filter: blur(2em);
+}
+
+canvas {
+  touch-action: none;
+}
+
+.scrim-max-width {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  position: relative;
+  max-width: 1120px;
+}
+
+.MouseScroll--chevron {
+  animation: ChevronAnimation 3s ease infinite;
+  transform: translateY(3px);
+}
+
+@keyframes ChevronAnimation {
+  0% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+
+  60% {
+    transform: translateY(3px);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+    /* Adjust the float height as needed */
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.float {
+  animation: float 4s ease-in-out infinite;
+}
