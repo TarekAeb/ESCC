@@ -28,7 +28,7 @@ const Loader = () => {
         const animateCounter = (selector: string, duration: number, delay = 0) => {
             const counter = document.querySelector(selector);
             if (!counter) return;
-            
+
             const numHeight = counter.querySelector<HTMLElement>('.num')?.clientHeight || 0;
             const totalDistance = (counter.querySelectorAll('.num').length - 1) * numHeight;
 
@@ -88,17 +88,18 @@ const Loader = () => {
             })
             .to('.loader', {
                 scale: 40,
+                x:2000,
                 duration: 1,
                 delay: 3,
                 ease: 'power2.inOut',
             })
-            .to('.loader', {
-                scale: 45,
-                y: 500,
-                x: 2000,
-                duration: 1,
-                ease: 'power2.inOut',
-            })
+            // .to('.loader', {
+            //     scale: 45,
+            //     y: 500,
+            //     x: 2000,
+            //     duration: 1,
+            //     ease: 'power2.inOut',
+            // })
             .to('.loading-screen', {
                 opacity: 0,
                 duration: 0.5,
@@ -107,7 +108,14 @@ const Loader = () => {
     }, []);
 
     return (
-        <div ref={loaderRef} className="z-30 loading-screen fixed top-0 left-0 w-full h-full bg-black text-white pointer-events-none">
+        <div ref={loaderRef} className="loading-screen top-0 left-0 w-[100vw] h-[100vh] bg-black text-white pointer-events-none"
+            style={{
+                zIndex: 9999,
+                opacity: 1,
+                transition: 'opacity 0.5s',
+                width: '100vw',
+                height: '100vh',
+            }}>
             <div className="loader absolute top-[50%] left-[50%] w-[300px] h-[50px] translate-x-[-50%] translate-y-[-50%] flex bg-gray-700">
                 <div className="bar h-[50px] loader1 relative bg-white"></div>
                 <div className="bar h-[50px] loader2 relative bg-white"></div>

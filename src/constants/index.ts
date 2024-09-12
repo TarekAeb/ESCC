@@ -3,12 +3,32 @@ import { Amina, Arselane, CollectiveSport, GreenEnvironment, Health, Individuals
 export const Navlinks = ["Departments", "Members", "Contact"];
 
 export const Departments = [
-    { title: 'Collective sports', description: 'Engage in team activities that foster collaboration and camaraderie.', icon: CollectiveSport },
-    { title: 'Individual sports', description: 'Focus on personal achievement and self-improvement in solo activities.', icon: IndividualsSport },
-    { title: 'Mental sports', description: 'Enhance mental acuity and strategic thinking through cognitive challenges.', icon: MentalSport },
-    { title: 'Green environment', description: 'Promote sustainability and eco-friendly practices in our activities.', icon: GreenEnvironment },
-    { title: 'Health', description: 'Prioritize wellness and healthy living through various physical activities.', icon: Health },
-]
+    {
+        title: 'Collective sports',
+        description: 'Engage in team activities that foster collaboration, camaraderie, and a sense of unity. Collective sports are designed to build strong interpersonal skills, trust among teammates, and effective communication while striving toward shared goals.',
+        icon: CollectiveSport
+    },
+    {
+        title: 'Individual sports',
+        description: 'Focus on personal achievement, discipline, and self-improvement in solo activities. Individual sports push athletes to reach their highest potential by honing skills, setting personal records, and developing a deep sense of self-reliance and mental toughness.',
+        icon: IndividualsSport
+    },
+    {
+        title: 'Mental sports',
+        description: 'Enhance mental acuity, strategic thinking, and problem-solving through cognitive challenges. Mental sports require focus, patience, and analytical skills, providing an excellent way to stimulate brain function and improve decision-making in competitive environments.',
+        icon: MentalSport
+    },
+    {
+        title: 'Green environment',
+        description: 'Promote sustainability and eco-friendly practices in all our activities, encouraging members to engage with nature and take actions that contribute to environmental conservation. Our green initiatives aim to foster environmental responsibility and create a healthier planet for future generations.',
+        icon: GreenEnvironment
+    },
+    {
+        title: 'Health',
+        description: 'Prioritize wellness, healthy living, and physical fitness through various engaging activities. Our health programs are designed to support overall well-being, combining exercise, mindfulness, and proper nutrition to enhance quality of life and prevent illness.',
+        icon: Health
+    },
+];
 
 
 export const Members = [

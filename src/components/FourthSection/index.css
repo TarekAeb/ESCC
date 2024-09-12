@@ -1,0 +1,49 @@
+.smallFont {
+  font-size: large;
+  color: #374151;
+}
+
+.bigFont {
+  font-size: xxx-large;
+  color: white;
+}
+
+.xsmallFont {
+  font-size: medium;
+  color:  #374151;
+}
+
+.xbigFont {
+  font-size: large;
+  color: white;
+}
+
+.word {
+  position: relative;
+}
+
+.line-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #0d0d0d;
+  opacity: 0.8;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .bigFont {
+    font-size: x-large;
+  }
+  .xbigFont {
+    font-size: medium;
+  }
+  .smallFont {
+    font-size: medium;
+  }
+  .xsmallFont {
+    font-size: small;
+  }
+}

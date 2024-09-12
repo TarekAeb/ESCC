@@ -1,12 +1,17 @@
 import Hero from './components/Hero';
 import Lenis from '@studio-freight/lenis';
-// import Loader from './components/Loader';
-import SecondSection from './components/SecondSection';
 import FourthSection from './components/FourthSection';
-// import Loader from './components/Loader';
 import { useGSAP } from '@gsap/react';
+import Footer from './components/Footer';
+import { useState } from 'react';
+import Contact from './components/Contact';
 // import MemberCarousel from './components/MembersCarousel/index.js';
 const App = () => {
+  const [showLoader, setShowLoader] = useState(true);
+  setTimeout(() => {
+    setShowLoader(false);
+  }
+    , 17000);
   useGSAP(() => {
     // Create a new Lenis instance with the desired configuration
     const lenis = new Lenis({
@@ -28,12 +33,14 @@ const App = () => {
   return (
 
     <>
-      {/* <Loader /> */}
-      <main className='bg-black w-full h-full flex flex-col'>
+      {/* {showLoader ? <Loader /> : ( */}
+      <main className='bg-white w-full h-full flex flex-col'>
         <Hero />
-        <SecondSection />
+        {/* <SecondSection /> */}
         {/* <MemberCarousel /> */}
         <FourthSection />
+        <Contact />
+        <Footer />
       </main>
     </>
   );
