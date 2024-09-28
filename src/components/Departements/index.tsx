@@ -1,12 +1,11 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Departments } from '../../constants';
-import { TextPlugin } from 'gsap/TextPlugin';
 import { useGSAP } from '@gsap/react';
 import './index.css';
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
-const FourthSection = () => {
+const DepartmentSection = () => {
     useGSAP(() => {
         // Animate the section heading
         gsap.to('.section-heading', {
@@ -20,7 +19,7 @@ const FourthSection = () => {
                 trigger: '.section-heading',
                 start: 'top center',
                 end: 'bottom center',
-                toggleActions: 'play none none none', // Keeps the heading in view
+                toggleActions: 'play restart none none', // Keeps the heading in view
             },
         });
 
@@ -28,12 +27,12 @@ const FourthSection = () => {
         Departments.forEach((item, index) => {
             gsap.to(`.title-${index}`, {
                 y: 0,
-                duration: .5,
+                duration: .3,
                 opacity: 1,
                 ease: 'power2.inOut',
                 scrollTrigger: {
                     trigger: `.title-${index}`,
-                    start: 'top center',
+                    start: 'top bottom',
                     end: 'bottom center',
                     toggleActions: 'play none none none', // Restarts when scrolled back in
                 },
@@ -42,8 +41,8 @@ const FourthSection = () => {
             gsap.to(targetRef, {
                 opacity: 1,
                 y: 0,
-                duration: 2,
-                delay: .2,
+                duration: 1,
+                // delay: .1,
                 ease: 'power2.inOut',
                 text: {
                     value: item.description,
@@ -52,7 +51,25 @@ const FourthSection = () => {
                 },
                 scrollTrigger: {
                     trigger: targetRef,
-                    start: 'top center',
+                    start: 'top bottom',
+                    end: 'bottom center',
+                    toggleActions: 'play none none none', // Restarts when scrolled back in
+                },
+            });
+            gsap.to(`.image-${index}`, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                // delay: .1,
+                ease: 'power2.inOut',
+                text: {
+                    value: item.description,
+                    oldClass: 'xsmallFont',
+                    newClass: 'xbigFont',
+                },
+                scrollTrigger: {
+                    trigger: targetRef,
+                    start: 'top bottom',
                     end: 'bottom center',
                     toggleActions: 'play none none none', // Restarts when scrolled back in
                 },
@@ -73,7 +90,7 @@ const FourthSection = () => {
     }, []);
 
     return (
-        <section className="relative p-4 lg:p-6 xl:p-10 flex flex-col items-center justify-center bg-primary z-20">
+        <section className="relative p-4 lg:p-6 xl:p-10 flex flex-col items-center justify-center bg-primary z-20 overflow-hidden">
             <h1 className="text-center section-heading p-4 text-gray-700">Our Departments</h1>
             <div className="flex flex-col">
                 {Departments.map((item, index) => (
@@ -81,11 +98,11 @@ const FourthSection = () => {
                         key={index}
                         className={`w-full flex flex-col items-center ${index % 2 === 0 ? 'lg:flex-row ' : 'lg:flex-row-reverse'}`}
                     >
-                        <div className="w-full lg:w-1/2 max-h-[80vh] p-4">
-                            <img src={item.icon} alt={item.title} className="w-full h-full max-h-[80vh]" />
+                        <div className="w-full lg:w-1/2 max-h-[80vh] p-4 ">
+                            <img src={item.icon} alt={item.title} className={`translate-y-96  image-${index} w-full h-full max-h-[80vh]`} />
                         </div>
                         <div className="p-4 lg:p-6 lg:w-1/2 flex-col items-center text-center ">
-                            <h2 className={`text-2xl lg:text-4xl text-center p-4 lg:p-6 title-${index} opacity-0`}>{item.title}</h2>
+                            <h2 className={`text-2xl lg:text-4xl text-center p-4 lg:p-6 title-${index} text-white opacity-0`}>{item.title}</h2>
                             <p className={`text-gray-700 description-${index} opacity-0`}>{item.description}</p>
                         </div>
                     </div>
@@ -95,4 +112,4 @@ const FourthSection = () => {
     );
 };
 
-export default FourthSection;
+export default DepartmentSection;

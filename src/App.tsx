@@ -1,17 +1,15 @@
-import Hero from './components/Hero';
 import Lenis from '@studio-freight/lenis';
-import FourthSection from './components/FourthSection';
 import { useGSAP } from '@gsap/react';
-import Footer from './components/Footer';
-import { useState } from 'react';
-import Contact from './components/Contact';
-// import MemberCarousel from './components/MembersCarousel/index.js';
+// import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './views/LandingPage';
+import Register from './views/Register';
 const App = () => {
-  const [showLoader, setShowLoader] = useState(true);
-  setTimeout(() => {
-    setShowLoader(false);
-  }
-    , 17000);
+  // const [showLoader, setShowLoader] = useState(true);
+  // setTimeout(() => {
+  //   setShowLoader(false);
+  // }
+  //   , 17000);
   useGSAP(() => {
     // Create a new Lenis instance with the desired configuration
     const lenis = new Lenis({
@@ -32,17 +30,13 @@ const App = () => {
   }, []);
   return (
 
-    <>
+    <Router>
       {/* {showLoader ? <Loader /> : ( */}
-      <main className='bg-white w-full h-full flex flex-col'>
-        <Hero />
-        {/* <SecondSection /> */}
-        {/* <MemberCarousel /> */}
-        <FourthSection />
-        <Contact />
-        <Footer />
-      </main>
-    </>
+      <Routes>
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
+    </Router>
   );
 };
 

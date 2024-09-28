@@ -6,13 +6,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
-    container: {
-      center: true,
-      padding: "1rem",
-    },
-
     screens: {
       xs: "450px",
       // => @media (min-width: 450px) { ... }
@@ -34,7 +28,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        Audiowide: ["Audiowide", 'sans-serif'],
+        Permanent_Marker: ["Permanent Marker", 'cursive'],
       },
       colors: {
         current: "currentColor",
@@ -43,8 +37,10 @@ module.exports = {
         black: "#000000",
         dark: "#1D2430",
         primary: '#33aa5b',
-        secondary: '#   ',
-        yellow: "#FBB040",
+        gray: '#00D44A',
+        secondary: '#016fb9',
+        blue: "#016FB9",
+        yellow: '#FF9300',
         bodyDEFAULT: "#788293",
         bodyDark: "#959CB1",
         stroke: "#E3E8EF",

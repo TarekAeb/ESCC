@@ -19,6 +19,12 @@ import bottomLeft from "../../public/assets/bottomleft.svg"
 import bottomRight from "../../public/assets/bottomright.svg"
 import middleLeft from "../../public/assets/middleleft.svg"
 import heroimg from "../../public/assets/heroimg.svg"
+import registerbg from "../../public/assets/registerbg.svg"
+import books from "../../public/assets/books.svg"
+import footballplayer from "../../public/assets/footbalPlayer.svg"
+import health1 from "../../public/assets/health1.svg"
+import painter from "../../public/assets/painter.svg"
+import basketr from "../../public/assets/basketr.svg"
 
 export const ArrowAbove = arrowButton;
 export const CollectiveSport = collectiveSport;
@@ -37,16 +43,21 @@ export const bottomLeftImg = bottomLeft;
 export const bottomRightImg = bottomRight;
 export const middleLeftImg = middleLeft;
 export const HeroImg = heroimg;
+export const RegisterBg = registerbg;
+export const Books = books;
+export const FootballPlayer = footballplayer;
+export const Health1 = health1;
+export const Painter = painter;
+export const Basketr = basketr;
 // members photos
-import arselan from "../../public/assets/images/arselan.png"
 import amina from "../../public/assets/images/amina.png"
 import person from "../../public/assets/person.svg"
-
-export const Arselane = arselan;
+import badis from "../../public/assets/images/badis.jpg"
+import meriem from "../../public/assets/images/meriem.jpg"
 export const Amina = amina;
 export const Person = person;
-
-
+export const Badis = badis;
+export const Meriem = meriem;
 
 import highlightFirstmv from "../../public/assets/video/highlight-first.mp4";
 import highlightSectmv from "../../public/assets/video/hightlight-third.mp4";

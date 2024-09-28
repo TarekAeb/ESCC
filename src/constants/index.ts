@@ -1,4 +1,4 @@
-import { Amina, Arselane, CollectiveSport, GreenEnvironment, Health, IndividualsSport, MentalSport, Person } from "../utils";
+import { Amina, Badis, CollectiveSport, GreenEnvironment, Health, IndividualsSport, MentalSport, Meriem, Person } from "../utils";
 
 export const Navlinks = ["Departments", "Members", "Contact"];
 
@@ -34,8 +34,8 @@ export const Departments = [
 export const Members = [
     {
         id: 1,
-        name: "",
-        department: "",
+        name: "Djamel",
+        department: "President",
         github: "",
         linkedIn: "",
         gmail: "",
@@ -43,21 +43,21 @@ export const Members = [
     },
     {
         id: 2,
-        name: "",
-        department: "",
-        github: "",
-        linkedIn: "",
-        gmail: "",
-        photo: Person,
+        name: "Badis Belkessam",
+        department: "SG",
+        github: "https://github.com/BadisBelkessam",
+        linkedIn: "Badis",
+        gmail: "badis.belkessam@ensia.edu.dz",
+        photo: Badis,
     },
     {
         id: 3,
-        name: "Djellouli Rabah Arslene",
+        name: "Ali",
         department: "HR",
         github: "www.google.com",
-        linkedIn: "https://www.linkedin.com/in/rabah-arslene-djellouli-247499287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-        gmail: "rabah.arslene.djellouli@ensia.edu.dz",
-        photo: Arselane,
+        linkedIn: "",
+        gmail: "@ensia.edu.dz",
+        photo: Person,
     },
     {
         id: 4,
@@ -70,12 +70,12 @@ export const Members = [
     },
     {
         id: 5,
-        name: "",
-        department: "",
+        name: "Meriem O uadfel",
+        department: "Green environmemt",
         github: "",
-        linkedIn: "",
-        gmail: "",
-        photo: Person,
+        linkedIn: "https://www.linkedin.com/in/meriem-ouadfel-b03624290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        gmail: "Meriem.ouadfel@ensia.edu.dz",
+        photo: Meriem,
     },
     {
         id: 6,

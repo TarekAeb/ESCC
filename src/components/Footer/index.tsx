@@ -3,7 +3,7 @@ import "./index.css"
 const Footer = () => {
     const time = new Date().getFullYear();
     return (
-        <>
+        <footer>
             <div className="w-full flex flex-col items-start p-4 ">
                 <div className="p-4">
                     <a href='https://github.com/TarekAeb/ESCC' className='hidden cursor-pointer btn-container md:flex align-center'>
@@ -27,7 +27,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </footer>
     )
 }
 export default Footer
