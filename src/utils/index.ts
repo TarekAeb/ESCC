@@ -58,13 +58,3 @@ export const Amina = amina;
 export const Person = person;
 export const Badis = badis;
 export const Meriem = meriem;
-
-import highlightFirstmv from "../../public/assets/video/highlight-first.mp4";
-import highlightSectmv from "../../public/assets/video/hightlight-third.mp4";
-import highlightThirdmv from "../../public/assets/video/hightlight-sec.mp4";
-import highlightFourthmv from "../../public/assets/video/hightlight-fourth.mp4";
-
-export const highlightFirstVideo = highlightFirstmv;
-export const highlightSecondVideo = highlightSectmv;
-export const highlightThirdVideo = highlightThirdmv;
-export const highlightFourthVideo = highlightFourthmv;

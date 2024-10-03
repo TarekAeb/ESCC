@@ -19,7 +19,7 @@ const DepartmentSection = () => {
                 trigger: '.section-heading',
                 start: 'top center',
                 end: 'bottom center',
-                toggleActions: 'play restart none none', // Keeps the heading in view
+                toggleActions: 'play none none none', // Keeps the heading in view
             },
         });
 
@@ -76,17 +76,7 @@ const DepartmentSection = () => {
             });
         });
 
-        // Animate the phone element
-        gsap.to('.phone', {
-            rotateY: 360,
-            scrollTrigger: {
-                trigger: '.phone',
-                start: 'top center',
-                end: 'bottom center',
-                scrub: true,
-                pin: true,
-            },
-        });
+        
     }, []);
 
     return (

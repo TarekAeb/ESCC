@@ -46,7 +46,6 @@ export default function Contact() {
 
     const sheetUrl =
       "https://script.google.com/macros/s/AKfycbztO84YozsxkytHR9B6zCQ2rTBf4j9R3WipULkx8rZN4ZU8EAoOmoC-StSwkwQoCTn9/exec";
-
     try {
       const res = await fetch(sheetUrl, {
         method: "POST",

@@ -15,26 +15,39 @@ import {
     RadioGroup,
     Radio,
     Stack,
+    Text
 } from "@chakra-ui/react";
 import { Departments } from "../constants";
 import { Basketr, Books, FootballPlayer, Health1 } from "../utils";
 import { gsap } from "gsap/gsap-core";
 import { useGSAP } from "@gsap/react";
+interface FormData {
+    FirstName: string;
+    LastName: string;
+    Email: string;
+    Phone: string;
+    Motivation: string;
+    DiscordId: string;
+    Dep1: string;
+    Dep1Reason: string;
+    Dep2: string;
+    Dep2Reason: string;
+    Experience: string;
+    Message: string;
+}
+
 export default function Register() {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         FirstName: "",
         LastName: "",
         Email: "",
         Phone: "",
         Motivation: "",
         DiscordId: "",
-        Deps: Departments.map((dep) => ({ ...dep, selected: false })),
         Dep1: "",
         Dep1Reason: "",
         Dep2: "",
         Dep2Reason: "",
-        Dep3: "",
-        Dep3Reason: "",
         Experience: "",
         Message: "",
     });
@@ -46,6 +59,7 @@ export default function Register() {
     const BasketballRRef = useRef(null);
     const ExplainRef = useRef(null);
     const leftElement1 = useRef(null);
+    const btnElement1 = useRef(null);
     const leftElement2 = useRef(null);
     const bottomElement2 = useRef(null);
     const rightElement2 = useRef(null);
@@ -54,12 +68,20 @@ export default function Register() {
     const btnElement2 = useRef(null);
     const rightElement2Text = useRef(null);
     const btn3Ref = useRef(null);
+    const Img3Ref = useRef(null);
+    const rightElement41Ref = useRef(null);
+    const rightElement42Ref = useRef(null);
+    const rightElement43Ref = useRef(null);
+    const Img4Ref = useRef(null);
 
     gsap.registerPlugin();
+
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [step, setStep] = useState(0);
+    const [errors, setErrors] = useState<Partial<FormData>>({});
+
     useGSAP(() => {
         if (step === 0) {
             const firstNameInput = firstNameRef.current;
@@ -79,27 +101,27 @@ export default function Register() {
                 explainText
             ) {
                 const inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, discordInput];
-                inputs.forEach((input) => {
+                inputs.forEach((input, index) => {
                     gsap.from(input, {
                         opacity: 0,
-                        y: 50,
-                        duration: 0.8,
+                        top: 49,
+                        left: -index * 40,
+                        duration: 1,
                         ease: "power3.out",
-                        // delay: index * 0.1, // Adjust delay for each input if desired
+                        delay: index * .1, // Adjust delay for each input if desired
                     });
                 });
-
                 gsap.from(basketballRImg, {
                     opacity: 0,
                     x: 50,
-                    duration: 0.8,
+                    duration: 1,
                     ease: "power3.out",
                 });
 
                 gsap.from(explainText, {
                     opacity: 0,
                     y: -50,
-                    duration: 0.8,
+                    duration: 1,
                     ease: "power3.out",
                 });
             }
@@ -150,79 +172,187 @@ export default function Register() {
                 duration: 0,
             });
         }
-
+        if (step === 3) {
+            gsap.from(rightElement41Ref.current, {
+                opacity: 0,
+                top: -1000,
+                duration: 1,
+                ease: "power2.inOut",
+            });
+            gsap.from(rightElement42Ref.current, {
+                opacity: 0,
+                top: -1000,
+                duration: 1,
+                ease: "power2.inOut",
+                delay: .2,
+            });
+            gsap.from(rightElement43Ref.current, {
+                opacity: 0,
+                top: -1000,
+                duration: 1,
+                ease: "power2.inOut",
+                delay: .4,
+            });
+            gsap.from(Img4Ref.current, {
+                duration: 1,
+                x: -1000,
+                ease: "power2.inOut"
+            })
+        }
     }, [step]);
 
-
-    const animateNext = () => {
-        if (step === 0) {
-            gsap.to(BasketballRRef.current, {
-                duration: 1,
-                x: 1000, // move to the right by 1000px
-                ease: "power2.inOut",
-            });
-            gsap.to(leftElement1.current, {
-                duration: 1,
-                x: -1000, // move to the left by 1000px
-                ease: "power2.inOut",
-            });
-            gsap.to(ExplainRef.current, {
-                duration: 1,
-                y: -1000, // move upwards by 1000px
-                ease: "power2.inOut",
-                onComplete: () => {
-                    // Increment step after animations complete
-                    setStep(1); // Set to the next step
-                }
-            });
-        }
-        else if (step === 1) {
-            gsap.to(leftElement2.current, {
-                duration: 1,
-                x: -1000, // move to the right by 1000px
-                ease: "power2.inOut",
-            });
-            gsap.to(bottomElement2.current, {
-                duration: 1,
-                x: 500, // move to the left by 1000px
-                ease: "power2.inOut",
-                opacity: 0,
-            });
-            gsap.to(btnElement2.current, {
-                duration: 1,
-                x: -450,
-                ease: "power2.inOut"
+    const validateFields = () => {
+        const newErrors: Partial<FormData> = {};
+        if (step == 0) {
+            if (!formData.FirstName.trim()) {
+                newErrors.FirstName = "First name is required";
+            } else if (formData.FirstName.length < 2) {
+                newErrors.FirstName = "First name must be at least 2 characters long";
             }
-            )
-            gsap.to(rightElement2Text.current, {
-                duration: 1,
-                height: '120px',
-                ease: "power2.inOut",
-                onComplete: () => {
-                    setStep(2);
-                }
-            })
+
+            if (!formData.LastName.trim()) {
+                newErrors.LastName = "Last name is required";
+            } else if (formData.LastName.length < 2) {
+                newErrors.LastName = "Last name must be at least 2 characters long";
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!formData.Email.trim()) {
+                newErrors.Email = "Email is required";
+            } else if (!emailRegex.test(formData.Email)) {
+                newErrors.Email = "Email format is invalid";
+            }
+
+            const phoneRegex = /^\d{10}$/;
+            if (!formData.Phone.trim()) {
+                newErrors.Phone = "Phone number is required";
+            } else if (!phoneRegex.test(formData.Phone)) {
+                newErrors.Phone = "Phone number must be exactly 10 digits";
+            }
+            const discordRegex = /^.{3,32}#[0-9]{4}$/;
+            if (!formData.DiscordId.trim()) {
+                newErrors.DiscordId = "Discord ID is required";
+            } else if (!discordRegex.test(formData.DiscordId)) {
+                newErrors.DiscordId = "Discord ID format must be 'username#1234'";
+            }
         }
-        else if (step === 2) {
-            gsap.to(leftElement3.current, {
-                duration: 1,
-                x:-1000,
-            })
-            gsap.to(btn3Ref.current, {
-                duration: 1,
-                maxWidth: '500px',
-                background: 'blue',
-                x:500,
-                onComplete: () => {
-                    setStep(3);
-                }
-            })
+
+        if (step === 1) {
+            if (!formData.Dep1.trim()) {
+                newErrors.Dep1 = "You must select Department 1";
+            }
+            if (!formData.Dep1Reason.trim()) {
+                newErrors.Dep1Reason = "Please provide a reason for selecting Department 1";
+            }
         }
+        if (step === 2) {
+            if (!formData.Dep2.trim()) {
+                newErrors.Dep2 = "You must select Department 2";
+            }
+
+            if (!formData.Dep2Reason.trim()) {
+                newErrors.Dep2Reason = "Please provide a reason for selecting Department 2";
+            }
+        }
+        if (step === 3) {
+            if (!formData.Motivation || formData.Motivation.length < 10) {
+                newErrors.Motivation = "Motivation must be at least 10 characters long if provided";
+            }
+            if (formData.Experience && formData.Experience.length < 10) {
+                newErrors.Experience = "Experience must be at least 10 characters long if provided";
+            }
+
+            if (formData.Message && formData.Message.length > 500) {
+                newErrors.Message = "Message cannot exceed 500 characters";
+            }
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
 
 
     const handleNext = () => {
-        animateNext();
+        const isValid = validateFields();
+        if (isValid) {
+            if (step === 0) {
+                gsap.to(BasketballRRef.current, {
+                    duration: 1,
+                    x: 1000,
+                    ease: "power2.inOut",
+                });
+                gsap.to(leftElement1.current, {
+                    duration: 1,
+                    x: -1000,
+                    ease: "power2.inOut",
+                });
+                gsap.to(btnElement1.current, {
+                    duration: 1,
+                    x: '40vw',
+                })
+                gsap.to(ExplainRef.current, {
+                    duration: 1,
+                    y: -1000,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        // Increment step after animations complete
+                        setStep(1); // Set to the next step
+                    }
+                });
+            }
+            else if (step === 1) {
+                gsap.to(leftElement2.current, {
+                    duration: 1,
+                    x: -1000, // move to the right by 1000px
+                    ease: "power2.inOut",
+                });
+                gsap.to(bottomElement2.current, {
+                    duration: 1,
+                    x: 500, // move to the left by 1000px
+                    ease: "power2.inOut",
+                    opacity: 0,
+                });
+                gsap.to(btnElement2.current, {
+                    duration: 1,
+                    x: -450,
+                    ease: "power2.inOut"
+                }
+                )
+                gsap.to(rightElement2Text.current, {
+                    duration: 1,
+                    height: '150px',
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        setStep(2);
+                    }
+                })
+            }
+            else if (step === 2) {
+                gsap.to(leftElement3.current, {
+                    duration: 1,
+                    x: -1000,
+                    ease: "power2.inOut"
+                })
+                gsap.to(rightElement3.current, {
+                    duration: 1,
+                    y: -500,
+                    ease: "power2.inOut"
+                })
+                gsap.to(Img3Ref.current, {
+                    duration: 1,
+                    y: 1000,
+                    ease: "power2.inOut"
+                })
+                gsap.to(btn3Ref.current, {
+                    duration: 1,
+                    x: 500,
+                    background: '#016FB9',
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        setStep(3);
+                    }
+                })
+            }
+        }
     };
     // const handlePrevious = () => setStep(step - 1);
 
@@ -234,71 +364,73 @@ export default function Register() {
         }));
     };
 
-    // const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    //     const { name, value } = e.target;
-    //     setFormData((prev) => ({
-    //         ...prev,
-    //         [name]: value,
-    //     }));
-    // };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setLoading(true);
-        setSuccess(null);
-        setError(null);
+        if (validateFields()) {
+            setLoading(true);
+            setSuccess(null);
+            setError(null);
 
-        const data = new FormData();
-        data.append("Name", formData.FirstName + " " + formData.LastName);
-        data.append("Email", formData.Email);
-        data.append("Phone", formData.Phone);
-        data.append("Departments", `${formData.Dep1}, ${formData.Dep2}, ${formData.Dep3}`);
-        data.append("DepReasons", `${formData.Dep1Reason}, ${formData.Dep2Reason}, ${formData.Dep3Reason}`);
-        data.append("DiscordId", formData.DiscordId);
-        data.append("Motivation", formData.Motivation);
-        data.append("Message", formData.Message);
+            const data = new FormData();
+            data.append("FirstName", formData.FirstName);
+            data.append("LastName", formData.LastName);
+            data.append("Email", formData.Email);
+            data.append("Phone", formData.Phone);
+            data.append("DiscordId", formData.DiscordId);
+            data.append("Motivation", formData.Motivation);
+            data.append("Dep1", formData.Dep1);
+            data.append("Dep1Reason", formData.Dep1Reason);
+            data.append("Dep2", formData.Dep2);
+            data.append("Dep2Reason", formData.Dep2Reason);
+            data.append("Experience", formData.Experience);
+            data.append("Message", formData.Message);
 
-        const sheetUrl = "https://script.google.com/macros/s/AKfycby59Pgo7LQWo3Msav6FtiQlF3OL9LbfMV9EpISSDrTGTWxVVBjqy8UL7v8mBkA2u0PEbw/exec";
+            const sheetUrl = "https://script.google.com/macros/s/AKfycbwiqPNBw4_JKPkGkKk3_yBmiH0JE7SJxpb8t_qnEW-PB_fBw88pU4I3DeNxIRJe1EGHDA/exec";
 
-        try {
-            const res = await fetch(sheetUrl, { method: "POST", body: data });
-            const json = await res.json();
-
-            if (res.ok && json.result === "success") {
-                setSuccess("Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊");
-                setFormData({
-                    FirstName: "",
-                    LastName: "",
-                    Email: "",
-                    Phone: "",
-                    Motivation: "",
-                    DiscordId: "",
-                    Dep1: "",
-                    Dep1Reason: "",
-                    Dep2: "",
-                    Dep2Reason: "",
-                    Dep3: "",
-                    Dep3Reason: "",
-                    Experience: "",
-                    Message: "",
-                    Deps: Departments.map((dep) => ({ ...dep, selected: false })),
+            try {
+                console.log("Sending data to server...");
+                const res = await fetch(sheetUrl, {
+                    method: "POST",
+                    body: data,
                 });
-            } else {
-                throw new Error(json.result || "Unexpected response from the server.");
+                console.log("Server response:", res);
+                const json = await res.json();
+                console.log("Server response:", json);
+
+                if (res.ok && json.result === "success") {
+                    setSuccess("Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊");
+                    setFormData({
+                        FirstName: "",
+                        LastName: "",
+                        Email: "",
+                        Phone: "",
+                        Motivation: "",
+                        DiscordId: "",
+                        Dep1: "",
+                        Dep1Reason: "",
+                        Dep2: "",
+                        Dep2Reason: "",
+                        Experience: "",
+                        Message: "",
+                    });
+                } else {
+                    throw new Error(json.message || "Unexpected response from the server.");
+                }
+            } catch (err: any) {
+                setError(err.message || "There was an error submitting the form.");
+            } finally {
+                setLoading(false);
             }
-        } catch (err: any) {
-            setError(err.message || "There was an error submitting the form.");
-        } finally {
-            setLoading(false);
         }
     };
+
 
     return (
         <ChakraProvider>
             <div className="py-4 flex flex-col w-full items-center justify-center"
                 style={{
-                    // minHeight: '100vh',
-                    height: '100vh'
+                    minHeight: '100vh',
+                    // height: '120vh'
                 }}>
                 <Flex>
                     <Flex className="bg-element" position={'absolute'} bottom={0} left={'-10%'} borderRadius={'50%'} width={'60vw'} height={'90vh'} zIndex={-1}></Flex>
@@ -314,118 +446,122 @@ export default function Register() {
                     <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 2 ? '#00D44A' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
                     <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 3 ? '#016FB9' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
                 </Flex>
-                <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10">
+                <form onSubmit={handleSubmit} style={{ transition: "opacity 0.5s ease-in-out" }} className="w-full flex flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10">
                     {step === 0 && (
-                        <Flex direction={'column'}>
+                        <Flex style={{ transition: "opacity 0.5s ease-in-out" }} direction={'column'}>
                             <Heading ref={ExplainRef} as={'h1'} size={'md'} fontFamily={'Permanent Marker'} color={'#000'} textAlign={'center'} mb={5}>Complete the form below to become one of the ESCC family</Heading>
                             <Flex justify={'space-around'}>
-                                <Flex ref={leftElement1} direction="column" gap={6} width={{ base: "100%", md: "50%" }} maxWidth={'550px'} padding={6}>
-                                    <FormControl isRequired>
-                                        <FormLabel color={'#fff'}>First name</FormLabel>
-                                        <Input
-                                            ref={firstNameRef}
-                                            placeholder="Enter Your First Name"
-                                            name="FirstName"
-                                            value={formData.FirstName}
-                                            onChange={handleChange}
-                                            background={'#ffffff'}
-                                        />
-                                    </FormControl>
-                                    <FormControl isRequired>
-                                        <FormLabel color={'#fff'}>Family name</FormLabel>
-                                        <Input
-                                            ref={lastNameRef}
-                                            placeholder="Enter your Last name"
-                                            name="LastName"
-                                            value={formData.LastName}
-                                            onChange={handleChange}
-                                            background={'#ffffff'}
-                                        />
-                                    </FormControl>
-                                    <FormControl isRequired>
-                                        <FormLabel color={'#fff'}>Email</FormLabel>
-                                        <Input
-                                            ref={emailRef}
-                                            placeholder="enter your Email (preferably your school email)"
-                                            name="Email"
-                                            value={formData.Email}
-                                            onChange={handleChange}
-                                            type="email"
-                                            background={'#ffffff'}
-                                        />
-                                    </FormControl>
-                                    <FormControl isRequired>
-                                        <FormLabel color={'#fff'}>Phone Number</FormLabel>
-                                        <Input
-                                            ref={phoneRef}
-                                            placeholder="Enter your Phone number (0---------)"
-                                            name="Phone"
-                                            value={formData.Phone}
-                                            onChange={handleChange}
-                                            type="tel"
-                                            background={'#ffffff'}
-                                        />
-                                    </FormControl>
-                                    <FormControl isRequired>
-                                        <FormLabel color={'#fff'}>Discord ID</FormLabel>
-                                        <Input
-                                            ref={discordRef}
-                                            placeholder="Enter your Discord ID"
-                                            name="DiscordId"
-                                            value={formData.DiscordId}
-                                            onChange={handleChange}
-                                            background={'#ffffff'}
-                                        />
-                                        <FormHelperText>
-                                            Can't find your Discord ID?{" "}
-                                            <a
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID"
-                                            >
-                                                Visit Discord support
-                                            </a>
-                                        </FormHelperText>
-                                    </FormControl>
-                                    <Button onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="orange" alignSelf={'end'} color={'#fff'} >Next</Button>
+                                <Flex direction="column" gap={6} width={{ base: "100%", md: "50%" }} maxWidth={'550px'} padding={6}>
+                                    <Flex ref={leftElement1} direction="column" gap={6} width={"100%"} maxWidth={'550px'} padding={6}>
+                                        <FormControl isRequired ref={firstNameRef}>
+                                            <FormLabel color={'#fff'}>First name</FormLabel>
+                                            <Input
+
+                                                placeholder="Enter Your First Name"
+                                                name="FirstName"
+                                                value={formData.FirstName}
+                                                onChange={handleChange}
+                                                background={'#ffffff'}
+                                            />
+                                            {errors.FirstName && <Text color="red">{errors.FirstName}</Text>}                                        </FormControl>
+                                        <FormControl isRequired ref={lastNameRef}>
+                                            <FormLabel color={'#fff'}>Family name</FormLabel>
+                                            <Input
+
+                                                placeholder="Enter your Last name"
+                                                name="LastName"
+                                                value={formData.LastName}
+                                                onChange={handleChange}
+                                                background={'#ffffff'}
+                                            />
+                                            {errors.LastName && <Text color="red">{errors.LastName}</Text>}
+                                        </FormControl>
+                                        <FormControl isRequired ref={emailRef}>
+                                            <FormLabel color={'#fff'}>Email</FormLabel>
+                                            <Input
+
+                                                placeholder="enter your Email (preferably your school email)"
+                                                name="Email"
+                                                value={formData.Email}
+                                                onChange={handleChange}
+                                                type="email"
+                                                background={'#ffffff'}
+                                            />
+                                            {errors.Email && <Text color="red">{errors.Email}</Text>}
+                                        </FormControl>
+                                        <FormControl isRequired ref={phoneRef}>
+                                            <FormLabel color={'#fff'}>Phone Number</FormLabel>
+                                            <Input
+
+                                                placeholder="Enter your Phone number (0---------)"
+                                                name="Phone"
+                                                value={formData.Phone}
+                                                onChange={handleChange}
+                                                type="tel"
+                                                background={'#ffffff'}
+                                            />
+                                            {errors.Phone && <Text color="red">{errors.Phone}</Text>}
+                                        </FormControl>
+                                        <FormControl isRequired ref={discordRef}>
+                                            <FormLabel color={'#fff'}>Discord ID</FormLabel>
+                                            <Input
+
+                                                placeholder="Enter your Discord ID"
+                                                name="DiscordId"
+                                                value={formData.DiscordId}
+                                                onChange={handleChange}
+                                                background={'#ffffff'}
+                                            />
+                                            {errors.DiscordId && <Text color="red">{errors.DiscordId}</Text>}
+                                            <FormHelperText>
+                                                Can't find your Discord ID?{" "}
+                                                <a
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID"
+                                                >
+                                                    Visit Discord support
+                                                </a>
+                                            </FormHelperText>
+                                        </FormControl>
+                                    </Flex>
+                                    <Button ref={btnElement1} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="orange" alignSelf={'end'} color={'#fff'} >Next</Button>
                                 </Flex>
                                 <img ref={BasketballRRef} className="hidden md:flex max-h-[700px]" src={Basketr} />
                             </Flex>
                         </Flex>
                     )}
                     {step === 1 && (
-                        <Flex width={'100%'}>
+                        <Flex style={{ transition: "opacity 0.5s ease-in-out" }} width={'100%'} direction={{ base: 'column', md: 'row' }}>
                             <Flex direction={'column'} width={{ base: '100%', md: '50%' }} >
-                                <FormControl ref={leftElement2} isRequired opacity={0}  >
-                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'}>
+                                <FormControl ref={leftElement2} isRequired opacity={0}> {/* Adjust opacity if needed */}
+                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>
                                         Choose Your First Department
                                     </FormLabel>
-                                    {/* <Flex direction={'column'}> */}
-                                    <RadioGroup name="Dep1" value={formData.Dep1}>
-                                        <Stack direction={'column'} textColor={'#FFF'} fontSize={'xl'} >
+                                    <RadioGroup
+                                        name="Dep1"
+                                        value={formData.Dep1}
+                                        onChange={(value) => setFormData(prev => ({ ...prev, Dep1: value }))}
+                                    >
+                                        <Stack direction={'column'} textColor={'#FFF'} fontSize={'xl'}>
                                             {Departments.map((dep) => (
                                                 <Radio
                                                     key={dep.title}
                                                     colorScheme="red"
                                                     value={dep.title}
-                                                    onChange={(e) => {
-                                                        setFormData((prev) => ({
-                                                            ...prev,
-                                                            Dep1: e.target.value,
-                                                        }));
-                                                    }}
                                                 >
                                                     {dep.title}
                                                 </Radio>
                                             ))}
                                         </Stack>
                                     </RadioGroup>
+                                    {errors.Dep1 && <Text color="red">{errors.Dep1}</Text>}
                                 </FormControl>
-                                <img ref={bottomElement2} src={Books} style={{ maxWidth: '400px', alignSelf: 'end', opacity: 0 }} className="w-[100px]" />
+                                <img ref={bottomElement2} src={Books} style={{ maxWidth: '400px', alignSelf: 'end', opacity: 0 }} className="hidden md:flex w-[100px]" />
                             </Flex>
-                            <Flex ref={rightElement2} direction={'column'} gap={'40px'} opacity={0} justify={"space-between"} width={{ base: '100%', md: '50%' }}>
-                                <FormControl>
-                                    <FormLabel color={'#fff'} fontSize={'2xl'}>Why do you choose this department</FormLabel>
+                            <Flex direction={'column'} gap={'40px'} justify={"space-between"} width={{ base: '100%', md: '50%' }}>
+                                <FormControl ref={rightElement2} opacity={0}>
+                                    <FormLabel color={'#fff'} fontSize={'2xl'} textAlign={{ base: 'center', md: 'start' }}>Why do you choose this department</FormLabel>
                                     <Textarea
                                         ref={rightElement2Text}
                                         name="Dep1Reason"
@@ -439,20 +575,21 @@ export default function Register() {
                                         maxWidth={'500px'}
                                         height={'250px'}
                                     />
+                                    {errors.Dep1Reason && <Text color="red">{errors.Dep1Reason}</Text>}
                                 </FormControl>
                                 <Button ref={btnElement2} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="red" alignSelf={'center'} color={'#fff'} >Next</Button>
                             </Flex>
                         </Flex>
                     )}
                     {step === 2 && (
-                        <Flex width={'100%'}>
+                        <Flex style={{ transition: "opacity 0.5s ease-in-out" }} width={'100%'} direction={{ base: 'column', md: 'row' }}>
                             <Flex direction={'column'} justifyContent={'space-between'} width={{ base: '100%', md: '50%' }}>
                                 <FormControl ref={leftElement3} isRequired opacity={0}>
-                                    <FormLabel color={'#fff'} fontSize={'2xl'}>Choose Your Second Department</FormLabel>
+                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>Choose Your Second Department</FormLabel>
                                     <RadioGroup
-                                        name="Dep1"
+                                        name="Dep2"
                                         value={formData.Dep2}
-                                    // onChange={handleSelectChange}
+                                        onChange={(value) => setFormData(prev => ({ ...prev, Dep2: value }))}
                                     >
                                         <Stack direction={'column'} textColor={'#FFF'} fontSize={'xl'}>
                                             {Departments.map((dep) => (
@@ -460,27 +597,22 @@ export default function Register() {
                                                     key={dep.title}
                                                     colorScheme="red"
                                                     value={dep.title}
-                                                    onChange={(e) => {
-                                                        setFormData((prev) => ({
-                                                            ...prev,
-                                                            Dep1: e.target.value,
-                                                        }));
-                                                    }}
                                                 >
                                                     {dep.title}
                                                 </Radio>
                                             ))}
                                         </Stack>
                                     </RadioGroup>
+                                    {errors.Dep2 && <Text color="red">{errors.Dep2}</Text>}
                                 </FormControl>
-                                <Button onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="green" alignSelf={'end'} color={'#fff'} >Next</Button>
+                                <Button ref={btn3Ref} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="green" alignSelf={'end'} color={'#fff'} className="hidden md:flex">Next</Button>
                             </Flex>
                             <Flex direction={'column'} alignItems={'center'} justifyContent={'center'} gap={'40px'} width={{ base: '100%', md: '50%' }} >
                                 <FormControl ref={rightElement3} opacity={0}>
                                     <FormLabel color={'#fff'} fontSize={'2xl'}>Why do you choose this department</FormLabel>
                                     <Textarea
-                                        name="Dep1Reason"
-                                        value={formData.Dep1Reason}
+                                        name="Dep2Reason"
+                                        value={formData.Dep2Reason}
                                         onChange={handleChange}
                                         placeholder="Enter your answer"
                                         background={'#ffffff'}
@@ -490,16 +622,18 @@ export default function Register() {
                                         maxWidth={'500px'}
                                         height={'150px'}
                                     />
+                                    {errors.Dep2Reason && <Text color="red">{errors.Dep2Reason}</Text>}
                                 </FormControl>
-                                <img src={Health1} style={{ maxWidth: '400px', alignSelf: 'center' }} className="w-[100px]" />
+                                <img ref={Img3Ref} src={Health1} style={{ maxWidth: '400px', alignSelf: 'center' }} className="hidden md:flex w-[100px]" />
+                                <Button onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="green" alignSelf={'end'} color={'#fff'} hidden>Next</Button>
                             </Flex>
                         </Flex>
                     )}
                     {step === 3 && (
-                        <Flex justify={"space-around"}>
-                            <img src={FootballPlayer} alt="Football player" className="hidden md:flex w-1/2" />
+                        <Flex justify={"space-around"} style={{ transition: "opacity 0.5s ease-in-out" }}>
+                            <img ref={Img4Ref} src={FootballPlayer} alt="Football player" className="hidden md:flex w-1/2" />
                             <Flex direction="column" gap={6} width={{ base: '100%', md: '50%' }}>
-                                <FormControl isRequired>
+                                <FormControl isRequired ref={rightElement41Ref}>
                                     <FormLabel color={'#fff'}>What motivates you to join the club?</FormLabel>
                                     <Textarea
                                         name="Motivation"
@@ -513,11 +647,12 @@ export default function Register() {
                                         maxWidth={'500px'}
                                         height={'120px'}
                                     />
+                                    {errors.Motivation && <Text color="red">{errors.Motivation}</Text>}
                                 </FormControl>
-                                <FormControl>
+                                <FormControl ref={rightElement42Ref}>
                                     <FormLabel color={'#fff'}>Have you been an athlete before?</FormLabel>
                                     <Textarea
-                                        name="Motivation"
+                                        name="Experience"
                                         value={formData.Experience}
                                         onChange={handleChange}
                                         placeholder="Share any experience you have"
@@ -528,8 +663,9 @@ export default function Register() {
                                         maxWidth={'500px'}
                                         height={'120px'}
                                     />
+                                    {errors.Experience && <Text color="red">{errors.Experience}</Text>}
                                 </FormControl>
-                                <FormControl>
+                                <FormControl ref={rightElement43Ref}>
                                     <FormLabel color={'#fff'}>Any addition you want to add?</FormLabel>
                                     <Textarea
                                         name="Message"
@@ -543,8 +679,9 @@ export default function Register() {
                                         maxWidth={'500px'}
                                         height={'120px'}
                                     />
+                                    {errors.Message && <Text color="red">{errors.Message}</Text>}
                                 </FormControl>
-                                <Button ref={btn3Ref} borderRadius={'30px'} maxWidth={'500px'} type="submit" colorScheme="blue" isLoading={loading}>
+                                <Button borderRadius={'30px'} maxWidth={'500px'} type="submit" colorScheme="blue" isLoading={loading}>
                                     {loading ? <Spinner size="sm" /> : "Register"}
                                 </Button>
                             </Flex>
