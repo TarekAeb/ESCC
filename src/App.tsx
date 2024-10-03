@@ -1,7 +1,8 @@
 import Lenis from '@studio-freight/lenis';
 import { useGSAP } from '@gsap/react';
 // import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Routes } from 'react-router';
 import LandingPage from './views/LandingPage';
 import Register from './views/Register';
 const App = () => {
