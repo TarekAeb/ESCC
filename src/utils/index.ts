@@ -10,9 +10,6 @@ import individuals from "../../public/assets/individual.svg"
 import mental from "../../public/assets/mental.svg"
 import sport from "../../public/assets/sports.svg"
 import health from "../../public/assets/health.svg"
-import Replay from "../../public/assets/replay.svg"
-import Pause from "../../public/assets/pause.svg"
-import Play from "../../public/assets/play.svg"
 import topLeft from "../../public/assets/frontleft.svg"
 import topRight from "../../public/assets/topright.svg"
 import bottomLeft from "../../public/assets/bottomleft.svg"
@@ -34,9 +31,6 @@ export const IndividualsSport = individuals;
 export const MentalSport = mental;
 export const Sports = sport;
 export const Health = health;
-export const playImg = Play;
-export const pauseImg = Pause;
-export const replayImg = Replay;
 export const topLeftImg = topLeft;
 export const topRightImg = topRight;
 export const bottomLeftImg = bottomLeft;
