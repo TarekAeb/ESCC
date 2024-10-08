@@ -36,7 +36,7 @@ const App = () => {
       {/* {showLoader ? <Loader /> : ( */}
         <Routes>
           {/* <Route path='/' element={<LandingPage />} /> */}
-          <Route path='/register' element={<Register />} />
+          <Route path='/' element={<Register />} />
         </Routes>
       {/* )} */}
     </Router>
