@@ -10,7 +10,7 @@ const Footer = () => {
                         <div className='svg-container bg-white h-[54px] w-[54px] p-1'><img src={Github} alt="github" /></div>
                         <button className="btn-17">
                             <span className="text-container">
-                                <span className="text">Contribute on github</span>
+                                <span className="text">Sponsor us</span>
                             </span>
                         </button>
                     </a>

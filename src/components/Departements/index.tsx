@@ -1,9 +1,10 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { TextPlugin } from 'gsap/dist/TextPlugin';
 import { Departments } from '../../constants';
 import { useGSAP } from '@gsap/react';
 import './index.css';
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger,TextPlugin);
 
 const DepartmentSection = () => {
     useGSAP(() => {
@@ -51,7 +52,7 @@ const DepartmentSection = () => {
                 },
                 scrollTrigger: {
                     trigger: targetRef,
-                    start: 'top bottom',
+                    start: 'top center',
                     end: 'bottom center',
                     toggleActions: 'play none none none', // Restarts when scrolled back in
                 },
@@ -64,12 +65,13 @@ const DepartmentSection = () => {
                 ease: 'power2.inOut',
                 text: {
                     value: item.description,
+                    // type: 'innerHTML',
                     oldClass: 'xsmallFont',
                     newClass: 'xbigFont',
                 },
                 scrollTrigger: {
                     trigger: targetRef,
-                    start: 'top bottom',
+                    start: 'top center',
                     end: 'bottom center',
                     toggleActions: 'play none none none', // Restarts when scrolled back in
                 },

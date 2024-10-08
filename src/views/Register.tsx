@@ -216,11 +216,11 @@ export default function Register() {
                 newErrors.LastName = "Last name must be at least 2 characters long";
             }
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const emailRegex = /^[^\s@]+@ensia.edu.dz$/;
             if (!formData.Email.trim()) {
                 newErrors.Email = "Email is required";
             } else if (!emailRegex.test(formData.Email)) {
-                newErrors.Email = "Email format is invalid";
+                newErrors.Email = "Invalid email format. Only Ensia student are allowed";
             }
 
             const phoneRegex = /^\d{10}$/;
@@ -229,7 +229,7 @@ export default function Register() {
             } else if (!phoneRegex.test(formData.Phone)) {
                 newErrors.Phone = "Phone number must be exactly 10 digits";
             }
-            const discordRegex = /^.{3,32}#[0-9]{4}$/;
+            const discordRegex = /^.{3,32}$/;
             if (!formData.DiscordId.trim()) {
                 newErrors.DiscordId = "Discord ID is required";
             } else if (!discordRegex.test(formData.DiscordId)) {
