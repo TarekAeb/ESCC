@@ -431,8 +431,10 @@ export default function Register() {
                 style={{
                     minHeight: '100vh',
                     // height: '120vh'
-                }}>
-                <Flex>
+                    background: '#016FB9'
+                }}
+            >
+                <Flex display={{ base: 'none', md: 'block' }}>
                     <Flex className="bg-element" position={'absolute'} bottom={0} left={'-10%'} borderRadius={'50%'} width={'60vw'} height={'90vh'} zIndex={-1}></Flex>
                     <Flex className="bg-element" position={'absolute'} left={0} top={-20} borderRadius={'50%'} width={'80vw'} height={'50vh'} zIndex={-1}></Flex>
                     <Flex className="bg-element" position={'absolute'} bottom={0} borderRadius={'50%'} width={'70vw'} height={'100vh'} zIndex={-1}></Flex>
@@ -451,8 +453,8 @@ export default function Register() {
                         <Flex style={{ transition: "opacity 0.5s ease-in-out" }} direction={'column'}>
                             <Heading ref={ExplainRef} as={'h1'} size={'md'} fontFamily={'Permanent Marker'} color={'#000'} textAlign={'center'} mb={5}>Complete the form below to become one of the ESCC family</Heading>
                             <Flex justify={'space-around'}>
-                                <Flex direction="column" gap={6} width={{ base: "100%", md: "50%" }} maxWidth={'550px'} padding={6}>
-                                    <Flex ref={leftElement1} direction="column" gap={6} width={"100%"} maxWidth={'550px'} padding={6}>
+                                <Flex direction="column" gap={6} width={{ base: "100%", md: "50%" }} justify={'center'} maxWidth={'550px'} padding={6}>
+                                    <Flex ref={leftElement1} direction="column" gap={6} width={"100%"} maxWidth={'550px'} padding={{ base: 1, lg: 6 }}>
                                         <FormControl isRequired ref={firstNameRef}>
                                             <FormLabel color={'#fff'}>First name</FormLabel>
                                             <Input
@@ -463,7 +465,8 @@ export default function Register() {
                                                 onChange={handleChange}
                                                 background={'#ffffff'}
                                             />
-                                            {errors.FirstName && <Text color="red">{errors.FirstName}</Text>}                                        </FormControl>
+                                            {errors.FirstName && <Text color="red">{errors.FirstName}</Text>}
+                                        </FormControl>
                                         <FormControl isRequired ref={lastNameRef}>
                                             <FormLabel color={'#fff'}>Family name</FormLabel>
                                             <Input
