@@ -1,24 +1,24 @@
 import React, { useState, useEffect, memo } from 'react';
-import { animated, useTransition } from 'react-spring';
+// import { animated, useTransition } from 'react-spring';
 
-const Waterfall: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const transitions = useTransition(children, {
-    from: { position: 'absolute', top: 0, left: 0, transform: 'translate3d(0,-80%,0) scale(0.9)', opacity: 0 },
-    enter: { transform: 'translate3d(0,0,0) scale(1)', opacity: 1 },
-    leave: { transform: 'translate3d(0,60%,0) scale(0.7)', opacity: 0 },
-  });
+// const Waterfall: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+//   const transitions = useTransition(children, {
+//     from: { position: 'absolute', top: 0, left: 0, transform: 'translate3d(0,-80%,0) scale(0.9)', opacity: 0 },
+//     enter: { transform: 'translate3d(0,0,0) scale(1)', opacity: 1 },
+//     leave: { transform: 'translate3d(0,60%,0) scale(0.7)', opacity: 0 },
+//   });
 
-  return (
-    <div style={{ position: 'relative' }}>
-      <div style={{ visibility: 'hidden' }}>{children}</div>
-      {transitions((style, item, key) => (
-        <animated.div key={key} style={style}>
-          {item}
-        </animated.div>
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div style={{ position: 'relative' }}>
+//       <div style={{ visibility: 'hidden' }}>{children}</div>
+//       {transitions((style, item) => (
+//         <animated.div>
+//           {item}
+//         </animated.div>
+//       ))}
+//     </div>
+//   );
+// };
 
 const emojiDigits = ['0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣'];
 
@@ -33,7 +33,7 @@ const AnimatedEmojiNumber: React.FC<{ value: number }> = memo(({ value }) => (
   </div>
 ));
 
-const Separator = () => <b style={{ margin: '0 5px 0 2px', color:'#fff' }}>:</b>;
+const Separator = () => <b style={{ margin: '0 5px 0 2px', color: '#fff' }}>:</b>;
 
 const padTime = (t: number, l = 2) => t.toString().padStart(l, '0');
 
