@@ -290,13 +290,13 @@ export default function Register() {
             }
         }
         if (step === 2) {
-            if (!formData.Dep2.trim()) {
-                newErrors.Dep2 = "You must select Department 2";
-            }
+            // if (!formData.Dep2.trim()) {
+            //     newErrors.Dep2 = "You must select Department 2";
+            // }
 
-            if (!formData.Dep2Reason.trim()) {
-                newErrors.Dep2Reason = "Please provide a reason for selecting Department 2";
-            }
+            // if (!formData.Dep2Reason.trim()) {
+            //     newErrors.Dep2Reason = "Please provide a reason for selecting Department 2";
+            // }
         }
         if (step === 3) {
             if (!formData.Motivation || formData.Motivation.length < 10) {
@@ -429,7 +429,7 @@ export default function Register() {
             data.append("Experience", formData.Experience);
             data.append("Message", formData.Message);
 
-            const sheetUrl = "https://script.google.com/macros/s/AKfycbwiqPNBw4_JKPkGkKk3_yBmiH0JE7SJxpb8t_qnEW-PB_fBw88pU4I3DeNxIRJe1EGHDA/exec";
+            const sheetUrl = "https://script.google.com/macros/s/AKfycby87-frE1MNTDWx8dkDlwHUtjUVMGugU2lM5k7pyLxPnlUwB0E4EXdWl9QxuGaNKASwbg/exec";
 
             try {
                 console.log("Sending data to server...");
@@ -624,8 +624,8 @@ export default function Register() {
                     {step === 2 && (
                         <Flex style={{ transition: "opacity 0.5s ease-in-out" }} width={'100%'} direction={{ base: 'column', md: 'row' }}>
                             <Flex direction={'column'} justifyContent={'space-between'} width={{ base: '100%', md: '50%' }}>
-                                <FormControl ref={leftElement3} isRequired opacity={0}>
-                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>Choose Your Second Department</FormLabel>
+                                <FormControl ref={leftElement3} opacity={0}>
+                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>Choose Your Second Department (Press next to skip)</FormLabel>
                                     <RadioGroup
                                         name="Dep2"
                                         value={formData.Dep2}
