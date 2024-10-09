@@ -29,7 +29,7 @@ export const Departments = [
         icon: Health
     },
     {
-        title: 'Artistic sports',
+        title: 'Artistic culture',
         description: 'Celebrate creativity, self-expression, and artistic talent through a variety of engaging activities. Artistic sports provide a platform for members to showcase their skills, explore new forms of expression, and collaborate with others in a supportive and inclusive environment.',
         icon: CollectiveSport
     }
