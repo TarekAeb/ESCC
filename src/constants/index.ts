@@ -28,6 +28,11 @@ export const Departments = [
         description: 'Prioritize wellness, healthy living, and physical fitness through various engaging activities. Our health programs are designed to support overall well-being, combining exercise, mindfulness, and proper nutrition to enhance quality of life and prevent illness.',
         icon: Health
     },
+    {
+        title: 'Artistic sports',
+        description: 'Celebrate creativity, self-expression, and artistic talent through a variety of engaging activities. Artistic sports provide a platform for members to showcase their skills, explore new forms of expression, and collaborate with others in a supportive and inclusive environment.',
+        icon: CollectiveSport
+    }
 ];
 
 
