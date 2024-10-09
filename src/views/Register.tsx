@@ -273,12 +273,12 @@ export default function Register() {
             } else if (!phoneRegex.test(formData.Phone)) {
                 newErrors.Phone = "Phone number must be exactly 10 digits";
             }
-            const discordRegex = /^.{3,32}$/;
-            if (!formData.DiscordId.trim()) {
-                newErrors.DiscordId = "Discord ID is required";
-            } else if (!discordRegex.test(formData.DiscordId)) {
-                newErrors.DiscordId = "Discord ID format must be 'username#1234'";
-            }
+            // const discordRegex = /^.{3,32}$/;
+            // if (!formData.DiscordId.trim()) {
+            //     newErrors.DiscordId = "Discord ID is required";
+            // } else if (!discordRegex.test(formData.DiscordId)) {
+            //     newErrors.DiscordId = "Discord ID format must be 'username#1234'";
+            // }
         }
 
         if (step === 1) {
@@ -429,7 +429,7 @@ export default function Register() {
             data.append("Experience", formData.Experience);
             data.append("Message", formData.Message);
 
-            const sheetUrl = "https://script.google.com/macros/s/AKfycby87-frE1MNTDWx8dkDlwHUtjUVMGugU2lM5k7pyLxPnlUwB0E4EXdWl9QxuGaNKASwbg/exec";
+            const sheetUrl = "https://script.google.com/macros/s/AKfycbyVFkomo-V64E4j4t3HMwSQ_eHN7k8e0SVvIG4-ajvsGtmGeTnaWzNHmwya59sDBEy6hg/exec";
 
             try {
                 console.log("Sending data to server...");
@@ -542,7 +542,7 @@ export default function Register() {
                                             />
                                             {errors.Phone && <Text color="red">{errors.Phone}</Text>}
                                         </FormControl>
-                                        <FormControl isRequired ref={discordRef}>
+                                        <FormControl ref={discordRef}>
                                             <FormLabel color={'#fff'}>Discord ID</FormLabel>
                                             <Input
 
