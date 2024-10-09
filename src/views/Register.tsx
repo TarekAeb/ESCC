@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import {
     Spinner,
     Alert,
@@ -15,12 +15,19 @@ import {
     RadioGroup,
     Radio,
     Stack,
-    Text
+    Text,
+    Box,
+    AlertDescription,
+    AlertTitle,
+    CloseButton
 } from "@chakra-ui/react";
+import Lottie from 'react-lottie';
 import { Departments } from "../constants";
 import { Basketr, Books, FootballPlayer, Health1 } from "../utils";
 import { gsap } from "gsap/gsap-core";
 import { useGSAP } from "@gsap/react";
+import CurrentTime from "../components/waiting.js";
+import animationData from "../../public/assets/animate.json";
 interface FormData {
     FirstName: string;
     LastName: string;
@@ -35,8 +42,45 @@ interface FormData {
     Experience: string;
     Message: string;
 }
-
 export default function Register() {
+    const defaultOptions = {
+        loop: true, // Loop the animation
+        autoplay: true, // Start playing the animation
+        animationData: animationData, // The JSON animation data
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice', // Preserve aspect ratio
+        },
+    };
+    const targetDate = useMemo(() => new Date('2024-10-09T14:30:00'), []);
+    const [isCountdownFinished, setIsCountdownFinished] = useState(false);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const now = new Date().getTime()
+            const timeLeft = targetDate.getTime() - now
+
+            if (timeLeft <= 0) {
+                setIsCountdownFinished(true) // Switch to content when countdown is done
+            }
+        }, 1000)
+
+        // Cleanup the interval when the component is unmounted
+        return () => clearInterval(interval)
+    }, [targetDate]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const now = new Date().getTime()
+            const timeLeft = targetDate.getTime() - now
+
+            if (timeLeft <= 0) {
+                setIsCountdownFinished(true) // Switch to content when countdown is done
+            }
+        }, 1000)
+
+        // Cleanup the interval when the component is unmounted
+        return () => clearInterval(interval)
+    }, [targetDate])
+
     const [formData, setFormData] = useState<FormData>({
         FirstName: "",
         LastName: "",
@@ -423,22 +467,15 @@ export default function Register() {
             }
         }
     };
-
-
-    return (
+    const renderMainContent = () => (
         <ChakraProvider>
-            <div className="py-4 flex flex-col w-full items-center justify-center"
-                style={{
-                    minHeight: '100vh',
-                    // height: '120vh'
-                    background: '#016FB9'
-                }}
-            >
-                <Flex display={{ base: 'none', md: 'block' }}>
-                    <Flex className="bg-element" position={'absolute'} bottom={0} left={'-10%'} borderRadius={'50%'} width={'60vw'} height={'90vh'} zIndex={-1}></Flex>
-                    <Flex className="bg-element" position={'absolute'} left={0} top={-20} borderRadius={'50%'} width={'80vw'} height={'50vh'} zIndex={-1}></Flex>
-                    <Flex className="bg-element" position={'absolute'} bottom={0} borderRadius={'50%'} width={'70vw'} height={'100vh'} zIndex={-1}></Flex>
+            <Flex direction={'column'} width={'100%'} alignItems={'center'} py={4} justify={'center'} minHeight={'100vh'} background={{ base: '#016FB9', md: 'transparent' }}>
+                <Flex display={{ base: 'none', md: 'flex' }}>
+                    <Flex className="bg-element" position="absolute" bottom={0} left="-10%" borderRadius="50%" width="60vw" height="90vh" zIndex={-1}></Flex>
+                    <Flex className="bg-element" position="absolute" left={0} top="-20" borderRadius="50%" width="80vw" height="50vh" zIndex={-1}></Flex>
+                    <Flex className="bg-element" position="absolute" bottom={0} borderRadius="50%" width="70vw" height="100vh" zIndex={-1}></Flex>
                 </Flex>
+
                 <Heading as="h1" size="xl" color={'#ffffff'} fontFamily={'Permanent Marker'} textAlign="center" my={5}>
                     ESC club registration
                 </Heading>
@@ -483,7 +520,7 @@ export default function Register() {
                                             <FormLabel color={'#fff'}>Email</FormLabel>
                                             <Input
 
-                                                placeholder="enter your Email (preferably your school email)"
+                                                placeholder="enter your Email (the school one)"
                                                 name="Email"
                                                 value={formData.Email}
                                                 onChange={handleChange}
@@ -693,19 +730,61 @@ export default function Register() {
                 </form>
 
                 {success && (
-                    <Alert status="success" mt={4}>
-                        <AlertIcon />
-                        {success}
-                    </Alert>
+                    <Flex className="fixed" maxWidth={'100%'} top={3}>
+                        <Alert status='success'>
+                            <AlertIcon />
+                            <Box>
+                                <AlertTitle>Success!</AlertTitle>
+                                <AlertDescription>
+                                    {success}
+                                </AlertDescription>
+                            </Box>
+                            <CloseButton
+                                alignSelf='flex-start'
+                                position='relative'
+                                right={-1}
+                                top={-1}
+                                onClick={() => { setError(null); window.location.reload(); }}
+                            />
+                        </Alert>
+                    </Flex>
                 )}
                 {error && (
-                    <Alert status="error" mt={4}>
-                        <AlertIcon />
-                        {error}
-                    </Alert>
+                    <Flex className="fixed" maxWidth={'100%'} top={20}>{/*TODO*/}
+                        <Alert status='error' >
+                            <AlertIcon />
+                            <Box>
+                                <AlertTitle>Error!</AlertTitle>
+                                <AlertDescription>
+                                    {error}
+                                </AlertDescription>
+                            </Box>
+                            <CloseButton
+                                alignSelf='flex-start'
+                                position='relative'
+                                right={-1}
+                                top={-1}
+                                onClick={() => { setError(null); window.location.reload(); }}
+                            />
+                        </Alert>
+                    </Flex>
                 )}
-            </div>
+            </Flex>
         </ChakraProvider >
     );
+    return (
+        <>
+            {
+                isCountdownFinished ? renderMainContent() :
+                    <ChakraProvider>
+                        <Flex style={{ background: '#004FB9' }} className="w-[100vw] h-[100vh] flex flex-col justify-center items-center">
+                            <Lottie options={defaultOptions} height={350} width={350} />
+                            <Text fontSize="2xl" color="white" textAlign={'center'} padding={1}>Registration will be available soon</Text>
+                            <CurrentTime />
+                        </Flex>
+                    </ChakraProvider>
+            }
+        </>
+    )
 }
 
