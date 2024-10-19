@@ -260,19 +260,25 @@ export default function Register() {
                 newErrors.LastName = "Last name must be at least 2 characters long";
             }
 
-            const emailRegex = /^[^\s@]+@ensia.edu.dz$/;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             if (!formData.Email.trim()) {
                 newErrors.Email = "Email is required";
             } else if (!emailRegex.test(formData.Email)) {
-                newErrors.Email = "Invalid email format. Only Ensia student are allowed";
+                newErrors.Email = "Invalid email format.";
             }
 
-            const phoneRegex = /^\d{10}$/;
-            if (!formData.Phone.trim()) {
-                newErrors.Phone = "Phone number is required";
-            } else if (!phoneRegex.test(formData.Phone)) {
-                newErrors.Phone = "Phone number must be exactly 10 digits";
-            }
+            // const phoneRegex = /^\d{10}$/;
+
+            // // Check if phone number is empty
+            // if (!formData.Phone.trim()) {
+            //     return; // Exit the function if phone is empty
+            // }
+
+            // // Check if phone number is exactly 10 digits
+            // if (!phoneRegex.test(formData.Phone) && formData.Phone.trim()) {
+            //     newErrors.Phone = "Phone number must be exactly 10 digits";
+            // }
+
             // const discordRegex = /^.{3,32}$/;
             // if (!formData.DiscordId.trim()) {
             //     newErrors.DiscordId = "Discord ID is required";
@@ -429,7 +435,7 @@ export default function Register() {
             data.append("Experience", formData.Experience);
             data.append("Message", formData.Message);
 
-            const sheetUrl = "https://script.google.com/macros/s/AKfycbyVFkomo-V64E4j4t3HMwSQ_eHN7k8e0SVvIG4-ajvsGtmGeTnaWzNHmwya59sDBEy6hg/exec";
+            const sheetUrl = "https://script.google.com/macros/s/AKfycbwZZYBgsmvlSEDEPtpSzWHyR7-m6c9vgzR_fgQGeG7HtPrOv4Dfo1W2PLAUgHuZqmPtSQ/exec";
 
             try {
                 console.log("Sending data to server...");
@@ -520,7 +526,7 @@ export default function Register() {
                                             <FormLabel color={'#fff'}>Email</FormLabel>
                                             <Input
 
-                                                placeholder="enter your Email (the school one)"
+                                                placeholder="enter your Email (preferably the school one)"
                                                 name="Email"
                                                 value={formData.Email}
                                                 onChange={handleChange}
@@ -529,7 +535,7 @@ export default function Register() {
                                             />
                                             {errors.Email && <Text color="red">{errors.Email}</Text>}
                                         </FormControl>
-                                        <FormControl isRequired ref={phoneRef}>
+                                        <FormControl ref={phoneRef}>
                                             <FormLabel color={'#fff'}>Phone Number</FormLabel>
                                             <Input
 
