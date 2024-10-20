@@ -28,7 +28,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        Permanent_Marker: ["Permanent Marker", 'cursive'],
+        Exo: ["Exo 2", 'sans-serif'],
       },
       colors: {
         current: "currentColor",

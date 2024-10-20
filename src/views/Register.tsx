@@ -482,7 +482,7 @@ export default function Register() {
                     <Flex className="bg-element" position="absolute" bottom={0} borderRadius="50%" width="70vw" height="100vh" zIndex={-1}></Flex>
                 </Flex>
 
-                <Heading as="h1" size="xl" color={'#ffffff'} fontFamily={'Permanent Marker'} textAlign="center" my={5}>
+                <Heading as="h1" size="xl" color={'#ffffff'} fontFamily={'Exo 2'} textAlign="center" my={5}>
                     ESC club registration
                 </Heading>
                 <Flex width={{ base: '100%', md: '70%' }} paddingX={'40px'} className="justify-between items-center" mb={10} gap={{ base: '2%', md: '4%' }}>
@@ -494,7 +494,7 @@ export default function Register() {
                 <form onSubmit={handleSubmit} style={{ transition: "opacity 0.5s ease-in-out" }} className="w-full flex flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10">
                     {step === 0 && (
                         <Flex style={{ transition: "opacity 0.5s ease-in-out" }} direction={'column'}>
-                            <Heading ref={ExplainRef} as={'h1'} size={'md'} fontFamily={'Permanent Marker'} color={'#000'} textAlign={'center'} mb={5}>Complete the form below to become one of the ESCC family</Heading>
+                            <Heading ref={ExplainRef} as={'h1'} size={'md'} fontFamily={'Exo 2'} color={'#000'} textAlign={'center'} mb={5}>Complete the form below to become one of the ESCC family</Heading>
                             <Flex justify={'space-around'}>
                                 <Flex direction="column" gap={6} width={{ base: "100%", md: "50%" }} justify={'center'} maxWidth={'550px'} padding={6}>
                                     <Flex ref={leftElement1} direction="column" gap={6} width={"100%"} maxWidth={'550px'} padding={{ base: 1, lg: 6 }}>

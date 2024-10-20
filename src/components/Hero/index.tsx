@@ -27,7 +27,7 @@ const Hero: FC = () => {
                 </div>
             </div>
             <div className="w-full p-4">
-                <h2 id="logo" className="Club-name text-4xl lg:text-6xl font-exo text-black font-extrabold text-center p-0 opacity-0">
+                <h2 id="logo" className="Club-name text-4xl lg:text-6xl font-exo2 text-black font-extrabold text-center p-0 opacity-0">
                     <span className="text-[#33aa5b]">E</span>nsia <span className="text-[#33aa5b]">S</span>ports & <span className="text-[#33aa5b]">C</span>ulture <span className="text-[#33aa5b]">C</span>lub
                 </h2>
                      <p id='heroText' className="opacity-0 text-center text-gray-700 text-lg lg:text-2xl mt-6">
