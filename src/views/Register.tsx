@@ -19,20 +19,25 @@ import {
     Box,
     AlertDescription,
     AlertTitle,
-    CloseButton
+    CloseButton,
+    Select,
+    Link,
+    Img
 } from "@chakra-ui/react";
-import Lottie from 'react-lottie';
+// import Lottie from 'react-lottie';
 import { Departments } from "../constants";
-import { Basketr, Books, FootballPlayer, Health1 } from "../utils";
+import { Basketr, Books, Flag, FootballPlayer, game, Health1 } from "../utils";
 import { gsap } from "gsap/gsap-core";
 import { useGSAP } from "@gsap/react";
-import CurrentTime from "../components/waiting.js";
+// import CurrentTime from "../components/waiting.js";
 import animationData from "../../public/assets/animate.json";
+import { IoIosArrowBack, IoIosArrowRoundBack } from "react-icons/io";
 interface FormData {
     FirstName: string;
     LastName: string;
     Email: string;
     Phone: string;
+    School: string;
     Motivation: string;
     DiscordId: string;
     Dep1: string;
@@ -86,6 +91,7 @@ export default function Register() {
         LastName: "",
         Email: "",
         Phone: "",
+        School: "",
         Motivation: "",
         DiscordId: "",
         Dep1: "",
@@ -100,6 +106,7 @@ export default function Register() {
     const emailRef = useRef(null);
     const phoneRef = useRef(null);
     const discordRef = useRef(null);
+    const schoolRef = useRef(null);
     const BasketballRRef = useRef(null);
     const ExplainRef = useRef(null);
     const leftElement1 = useRef(null);
@@ -133,6 +140,7 @@ export default function Register() {
             const emailInput = emailRef.current;
             const phoneInput = phoneRef.current;
             const discordInput = discordRef.current;
+            const schoolInput = schoolRef.current;
             const basketballRImg = BasketballRRef.current;
             const explainText = ExplainRef.current;
             if (
@@ -141,10 +149,11 @@ export default function Register() {
                 emailInput &&
                 phoneInput &&
                 discordInput &&
+                schoolInput &&
                 basketballRImg &&
                 explainText
             ) {
-                const inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, discordInput];
+                const inputs = [firstNameInput, lastNameInput, emailInput, schoolInput, phoneInput, discordInput];
                 inputs.forEach((input, index) => {
                     gsap.from(input, {
                         opacity: 0,
@@ -265,6 +274,9 @@ export default function Register() {
                 newErrors.Email = "Email is required";
             } else if (!emailRegex.test(formData.Email)) {
                 newErrors.Email = "Invalid email format.";
+            }
+            if (!formData.School.trim()) {
+                newErrors.School = "The school is required"
             }
 
             // const phoneRegex = /^\d{10}$/;
@@ -426,6 +438,7 @@ export default function Register() {
             data.append("LastName", formData.LastName);
             data.append("Email", formData.Email);
             data.append("Phone", formData.Phone);
+            data.append("School", formData.School);
             data.append("DiscordId", formData.DiscordId);
             data.append("Motivation", formData.Motivation);
             data.append("Dep1", formData.Dep1);
@@ -454,6 +467,7 @@ export default function Register() {
                         LastName: "",
                         Email: "",
                         Phone: "",
+                        School: "",
                         Motivation: "",
                         DiscordId: "",
                         Dep1: "",
@@ -463,6 +477,7 @@ export default function Register() {
                         Experience: "",
                         Message: "",
                     });
+                    setStep(4);
                 } else {
                     throw new Error(json.message || "Unexpected response from the server.");
                 }
@@ -485,13 +500,13 @@ export default function Register() {
                 <Heading as="h1" size="xl" color={'#ffffff'} fontFamily={'Exo 2'} textAlign="center" my={5}>
                     ESC club registration
                 </Heading>
-                <Flex width={{ base: '100%', md: '70%' }} paddingX={'40px'} className="justify-between items-center" mb={10} gap={{ base: '2%', md: '4%' }}>
+                {step !== 4 && (<Flex width={{ base: '100%', md: '70%' }} paddingX={'40px'} className="justify-between items-center" mb={10} gap={{ base: '2%', md: '4%' }}>
                     <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 0 ? '#FF9300' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
                     <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 1 ? '#D60002' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
                     <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 2 ? '#00D44A' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
                     <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 3 ? '#016FB9' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
-                </Flex>
-                <form onSubmit={handleSubmit} style={{ transition: "opacity 0.5s ease-in-out" }} className="w-full flex flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10">
+                </Flex>)}
+                <form onSubmit={handleSubmit} style={{ transition: "opacity 0.5s ease-in-out" }} className="w-full flex flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10 ">
                     {step === 0 && (
                         <Flex style={{ transition: "opacity 0.5s ease-in-out" }} direction={'column'}>
                             <Heading ref={ExplainRef} as={'h1'} size={'md'} fontFamily={'Exo 2'} color={'#000'} textAlign={'center'} mb={5}>Complete the form below to become one of the ESCC family</Heading>
@@ -507,6 +522,7 @@ export default function Register() {
                                                 value={formData.FirstName}
                                                 onChange={handleChange}
                                                 background={'#ffffff'}
+                                                border={`1px solid ${errors.FirstName ? 'red' : 'none'}`}
                                             />
                                             {errors.FirstName && <Text color="red">{errors.FirstName}</Text>}
                                         </FormControl>
@@ -519,6 +535,7 @@ export default function Register() {
                                                 value={formData.LastName}
                                                 onChange={handleChange}
                                                 background={'#ffffff'}
+                                                border={`1px solid ${errors.LastName ? 'red' : 'none'}`}
                                             />
                                             {errors.LastName && <Text color="red">{errors.LastName}</Text>}
                                         </FormControl>
@@ -532,13 +549,32 @@ export default function Register() {
                                                 onChange={handleChange}
                                                 type="email"
                                                 background={'#ffffff'}
+                                                border={`1px solid ${errors.Email ? 'red' : 'none'}`}
                                             />
                                             {errors.Email && <Text color="red">{errors.Email}</Text>}
+                                        </FormControl>
+                                        <FormControl ref={schoolRef} isRequired>
+                                            <FormLabel color={'#fff'}>School</FormLabel>
+                                            <Select
+                                                placeholder='Select your school'
+                                                name="School"
+                                                value={formData.School}
+                                                onChange={(e) => setFormData(prev => ({ ...prev, School: e.target.value }))}
+                                                background={'#fff'}
+                                                border={errors.School ? '1px solid red' : 'none'}
+                                                defaultValue={'ENSIA'}
+                                            >
+                                                <option value='ESNN'>ESNN</option>
+                                                <option value='ENSA'>ENSA</option>
+                                                <option value='NHSM'>NHSM</option>
+                                                <option value='ENSIA'>ENSIA</option>
+                                                <option value='NHSC'>NHSC</option>
+                                            </Select>
+                                            {errors.School && <Text color="red">{errors.School}</Text>}
                                         </FormControl>
                                         <FormControl ref={phoneRef}>
                                             <FormLabel color={'#fff'}>Phone Number</FormLabel>
                                             <Input
-
                                                 placeholder="Enter your Phone number (0---------)"
                                                 name="Phone"
                                                 value={formData.Phone}
@@ -615,11 +651,10 @@ export default function Register() {
                                         onChange={handleChange}
                                         placeholder="Enter your answer"
                                         background={'#ffffff'}
-                                        border={'1px'}
-                                        borderColor={'red'}
                                         borderRadius={'30px'}
                                         maxWidth={'500px'}
                                         height={'250px'}
+                                        border={`solid ${errors.Dep1Reason ? '2px red' : 'red 1px'}`}
                                     />
                                     {errors.Dep1Reason && <Text color="red">{errors.Dep1Reason}</Text>}
                                 </FormControl>
@@ -631,7 +666,7 @@ export default function Register() {
                         <Flex style={{ transition: "opacity 0.5s ease-in-out" }} width={'100%'} direction={{ base: 'column', md: 'row' }}>
                             <Flex direction={'column'} justifyContent={'space-between'} width={{ base: '100%', md: '50%' }}>
                                 <FormControl ref={leftElement3} opacity={0}>
-                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>Choose Your Second Department (Press next to skip)</FormLabel>
+                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>Choose Your Second Department <span className="text-sm text-grayLight">Press next to skip</span></FormLabel>
                                     <RadioGroup
                                         name="Dep2"
                                         value={formData.Dep2}
@@ -662,11 +697,11 @@ export default function Register() {
                                         onChange={handleChange}
                                         placeholder="Enter your answer"
                                         background={'#ffffff'}
-                                        border={'2px'}
-                                        borderColor={'#00D44A'}
                                         borderRadius={'30px'}
                                         maxWidth={'500px'}
                                         height={'150px'}
+                                        border={`solid ${errors.Dep2Reason ? '2px red' : '1px #00D44A'}`}
+
                                     />
                                     {errors.Dep2Reason && <Text color="red">{errors.Dep2Reason}</Text>}
                                 </FormControl>
@@ -687,11 +722,10 @@ export default function Register() {
                                         onChange={handleChange}
                                         placeholder="Share your thoughts"
                                         background={'#ffffff'}
-                                        border={'2px'}
-                                        borderColor={'#016FB9'}
                                         borderRadius={'30px'}
                                         maxWidth={'500px'}
                                         height={'120px'}
+                                        border={`2px solid ${errors.Motivation ? 'red' : '#016FB9'}`}
                                     />
                                     {errors.Motivation && <Text color="red">{errors.Motivation}</Text>}
                                 </FormControl>
@@ -733,28 +767,19 @@ export default function Register() {
                             </Flex>
                         </Flex>
                     )}
-                </form>
+                    {step === 4 && (
+                        <Flex direction="column" className="bg-white self-center" padding={{ base: '10px', md: '20px', lg: '25px' }} borderRadius={'40px'} gap={'10px'} width={{ base: '80%', md: '400px', lg: '600px', xl: '50%' }} alignSelf={'center'}>
+                            <Flex direction="column" className="text-lg text-black text-center" gap={'10px'} justify={'center'} alignItems={'center'}>
+                                <Heading as={'h3'} fontWeight={'bold'} color="green">Congratulation!</Heading>
+                                <h2>Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊</h2>
+                                <Text>Feel free to visit our <Link href="https://www.instagram.com/ensia.sport.culture.club" color={'orange.500'} fontWeight={'bold'}>Instagram</Link> account and <Link href={'https://discord.gg/px6CnQUb'} color={'orange.500'} fontWeight={'bold'}>Discord </Link> server to stay updated.</Text>
+                                <Img src={game} width={{ base: '80px', md: '100px' }} className="gameover" alt="Game over icon" />
+                            </Flex>
+                            <Link href="/" className="text-grayDark text-start flex items-center"><IoIosArrowRoundBack />Return to the registration</Link>
+                        </Flex>
 
-                {success && (
-                    <Flex className="fixed" maxWidth={'100%'} top={3}>
-                        <Alert status='success'>
-                            <AlertIcon />
-                            <Box>
-                                <AlertTitle>Success!</AlertTitle>
-                                <AlertDescription>
-                                    {success}
-                                </AlertDescription>
-                            </Box>
-                            <CloseButton
-                                alignSelf='flex-start'
-                                position='relative'
-                                right={-1}
-                                top={-1}
-                                onClick={() => { setError(null); window.location.reload(); }}
-                            />
-                        </Alert>
-                    </Flex>
-                )}
+                    )}
+                </form>
                 {error && (
                     <Flex className="fixed" maxWidth={'100%'} top={20}>{/*TODO*/}
                         <Alert status='error' >
@@ -780,7 +805,7 @@ export default function Register() {
     );
     return (
         <>
-            {
+            {/* {
                 isCountdownFinished ? renderMainContent() :
                     <ChakraProvider>
                         <Flex style={{ background: '#004FB9' }} className="w-[100vw] h-[100vh] flex flex-col justify-center items-center">
@@ -789,7 +814,8 @@ export default function Register() {
                             <CurrentTime />
                         </Flex>
                     </ChakraProvider>
-            }
+            } */}
+            {renderMainContent()}
         </>
     )
 }

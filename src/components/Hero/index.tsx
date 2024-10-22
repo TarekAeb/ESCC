@@ -13,7 +13,7 @@ const Hero: FC = () => {
         gsap.to('#heroText', { y:0 ,opacity: 1, delay: 2, })
     }, [])
     return (
-        <section className="select-none w-full flex flex-col justify-between items-center z-20">
+        <section className=" w-full flex flex-col justify-between items-center z-20">
             <Header />      
             <div id='heroBg' className="absolute top-0 w-[100vw] h-[100vh] z-[-2] flex opacity-0">
                 <div className="flex flex-col">

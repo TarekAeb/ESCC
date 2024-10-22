@@ -22,6 +22,8 @@ import footballplayer from "../../public/assets/footbalPlayer.svg"
 import health1 from "../../public/assets/health1.svg"
 import painter from "../../public/assets/painter.svg"
 import basketr from "../../public/assets/basketr.svg"
+import flag from "../../public/assets/flag.svg"
+import Game from "../../public/assets/gameover.svg"
 
 export const ArrowAbove = arrowButton;
 export const CollectiveSport = collectiveSport;
@@ -43,6 +45,8 @@ export const FootballPlayer = footballplayer;
 export const Health1 = health1;
 export const Painter = painter;
 export const Basketr = basketr;
+export const Flag = flag;
+export const game = Game;
 // members photos
 import amina from "../../public/assets/images/amina.png"
 import person from "../../public/assets/person.svg"
