@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useMemo } from "react";
+import React, { useRef, useState } from "react";
 import {
     Spinner,
     Alert,
@@ -26,12 +26,12 @@ import {
 } from "@chakra-ui/react";
 // import Lottie from 'react-lottie';
 import { Departments } from "../constants";
-import { Basketr, Books, Flag, FootballPlayer, game, Health1 } from "../utils";
+import { Basketr, Books, FootballPlayer, game, Health1 } from "../utils";
 import { gsap } from "gsap/gsap-core";
 import { useGSAP } from "@gsap/react";
 // import CurrentTime from "../components/waiting.js";
-import animationData from "../../public/assets/animate.json";
-import { IoIosArrowBack, IoIosArrowRoundBack } from "react-icons/io";
+// import animationData from "../../public/assets/animate.json";
+import { IoIosArrowRoundBack } from "react-icons/io";
 interface FormData {
     FirstName: string;
     LastName: string;
@@ -48,43 +48,43 @@ interface FormData {
     Message: string;
 }
 export default function Register() {
-    const defaultOptions = {
-        loop: true, // Loop the animation
-        autoplay: true, // Start playing the animation
-        animationData: animationData, // The JSON animation data
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice', // Preserve aspect ratio
-        },
-    };
-    const targetDate = useMemo(() => new Date('2024-10-09T14:30:00'), []);
-    const [isCountdownFinished, setIsCountdownFinished] = useState(false);
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const now = new Date().getTime()
-            const timeLeft = targetDate.getTime() - now
+    // const defaultOptions = {
+    //     loop: true, // Loop the animation
+    //     autoplay: true, // Start playing the animation
+    //     animationData: animationData, // The JSON animation data
+    //     rendererSettings: {
+    //         preserveAspectRatio: 'xMidYMid slice', // Preserve aspect ratio
+    //     },
+    // };
+    // const targetDate = useMemo(() => new Date('2024-10-09T14:30:00'), []);
+    // const [isCountdownFinished, setIsCountdownFinished] = useState(false);
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         const now = new Date().getTime()
+    //         const timeLeft = targetDate.getTime() - now
 
-            if (timeLeft <= 0) {
-                setIsCountdownFinished(true) // Switch to content when countdown is done
-            }
-        }, 1000)
+    //         if (timeLeft <= 0) {
+    //             setIsCountdownFinished(true) // Switch to content when countdown is done
+    //         }
+    //     }, 1000)
 
-        // Cleanup the interval when the component is unmounted
-        return () => clearInterval(interval)
-    }, [targetDate]);
+    //     // Cleanup the interval when the component is unmounted
+    //     return () => clearInterval(interval)
+    // }, [targetDate]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const now = new Date().getTime()
-            const timeLeft = targetDate.getTime() - now
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         const now = new Date().getTime()
+    //         const timeLeft = targetDate.getTime() - now
 
-            if (timeLeft <= 0) {
-                setIsCountdownFinished(true) // Switch to content when countdown is done
-            }
-        }, 1000)
+    //         if (timeLeft <= 0) {
+    //             setIsCountdownFinished(true) // Switch to content when countdown is done
+    //         }
+    //     }, 1000)
 
-        // Cleanup the interval when the component is unmounted
-        return () => clearInterval(interval)
-    }, [targetDate])
+    //     // Cleanup the interval when the component is unmounted
+    //     return () => clearInterval(interval)
+    // }, [targetDate])
 
     const [formData, setFormData] = useState<FormData>({
         FirstName: "",
@@ -128,9 +128,9 @@ export default function Register() {
     gsap.registerPlugin();
 
     const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState<string | null>(null);
+    // const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [step, setStep] = useState(0);
+    const [step, setStep] = useState(4);
     const [errors, setErrors] = useState<Partial<FormData>>({});
 
     useGSAP(() => {
@@ -430,7 +430,7 @@ export default function Register() {
         e.preventDefault();
         if (validateFields()) {
             setLoading(true);
-            setSuccess(null);
+            // setSuccess(null);
             setError(null);
 
             const data = new FormData();
@@ -461,7 +461,7 @@ export default function Register() {
                 console.log("Server response:", json);
 
                 if (res.ok && json.result === "success") {
-                    setSuccess("Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊");
+                    // setSuccess("Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊");
                     setFormData({
                         FirstName: "",
                         LastName: "",
@@ -768,9 +768,9 @@ export default function Register() {
                         </Flex>
                     )}
                     {step === 4 && (
-                        <Flex direction="column" className="bg-white self-center" padding={{ base: '10px', md: '20px', lg: '25px' }} borderRadius={'40px'} gap={'10px'} width={{ base: '80%', md: '400px', lg: '600px', xl: '50%' }} alignSelf={'center'}>
-                            <Flex direction="column" className="text-lg text-black text-center" gap={'10px'} justify={'center'} alignItems={'center'}>
-                                <Heading as={'h3'} fontWeight={'bold'} color="green">Congratulation!</Heading>
+                        <Flex direction="column" className="bg-white self-center" padding={{ base: '10px', md: '20px', lg: '25px' }} borderRadius={{ base: '25px', md: '40px' }} gap={'10px'} width={{ base: '80%', md: '400px', lg: '600px', xl: '50%' }} alignSelf={'center'}>
+                            <Flex direction="column" className="md:text-lg text-black text-center" gap={'10px'} justify={'center'} alignItems={'center'}>
+                                <Text fontWeight={'bold'} fontSize={'xl'} color="green">Congratulations!</Text>
                                 <h2>Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊</h2>
                                 <Text>Feel free to visit our <Link href="https://www.instagram.com/ensia.sport.culture.club" color={'orange.500'} fontWeight={'bold'}>Instagram</Link> account and <Link href={'https://discord.gg/px6CnQUb'} color={'orange.500'} fontWeight={'bold'}>Discord </Link> server to stay updated.</Text>
                                 <Img src={game} width={{ base: '80px', md: '100px' }} className="gameover" alt="Game over icon" />
