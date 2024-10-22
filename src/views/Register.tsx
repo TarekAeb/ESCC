@@ -773,7 +773,7 @@ export default function Register() {
                                 <Text fontWeight={'bold'} fontSize={'xl'} color="green">Congratulations!</Text>
                                 <h2>Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊</h2>
                                 <Text>Feel free to visit our <Link href="https://www.instagram.com/ensia.sport.culture.club" target="_blank" color={'orange.500'} fontWeight={'bold'}>Instagram</Link> account and <Link href={'https://discord.gg/px6CnQUb'} target="_blank" color={'orange.500'} fontWeight={'bold'}>Discord </Link> server to stay updated.</Text>
-                                <Img src={game} width={{ base: '80px', md: '100px' }} className="gameover" alt="Game over icon" />
+                                <Img src={game} width={{ base: '80px', md: '100px' }} className="" alt="Game over icon" />
                             </Flex>
                             <Link href="/" className="text-grayDark text-start flex items-center"><IoIosArrowRoundBack />Return to the registration</Link>
                         </Flex>
