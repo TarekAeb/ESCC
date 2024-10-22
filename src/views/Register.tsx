@@ -130,7 +130,7 @@ export default function Register() {
     const [loading, setLoading] = useState(false);
     // const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const [step, setStep] = useState(4);
+    const [step, setStep] = useState(0);
     const [errors, setErrors] = useState<Partial<FormData>>({});
 
     useGSAP(() => {
