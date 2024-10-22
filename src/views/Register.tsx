@@ -448,7 +448,7 @@ export default function Register() {
             data.append("Experience", formData.Experience);
             data.append("Message", formData.Message);
 
-            const sheetUrl = "https://script.google.com/macros/s/AKfycbyk2R5bullxDm9t8tOFycWFaIjOhWLHnN58hNGlB2OnHVQ-64C8RR9SbUziAYtqtxfU_g/exec";
+            const sheetUrl = "https://script.google.com/macros/s/AKfycbyTvysGsM6Ojx6nnaHrSHYC6wStJPVzvH-RatVCi8onm0VfKh0rtxLw9495Sj552wC6OQ/exec";
 
             try {
                 console.log("Sending data to server...");
@@ -772,7 +772,7 @@ export default function Register() {
                             <Flex direction="column" className="md:text-lg text-black text-center" gap={'10px'} justify={'center'} alignItems={'center'}>
                                 <Text fontWeight={'bold'} fontSize={'xl'} color="green">Congratulations!</Text>
                                 <h2>Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊</h2>
-                                <Text>Feel free to visit our <Link href="https://www.instagram.com/ensia.sport.culture.club" color={'orange.500'} fontWeight={'bold'}>Instagram</Link> account and <Link href={'https://discord.gg/px6CnQUb'} color={'orange.500'} fontWeight={'bold'}>Discord </Link> server to stay updated.</Text>
+                                <Text>Feel free to visit our <Link href="https://www.instagram.com/ensia.sport.culture.club" target="_blank" color={'orange.500'} fontWeight={'bold'}>Instagram</Link> account and <Link href={'https://discord.gg/px6CnQUb'} target="_blank" color={'orange.500'} fontWeight={'bold'}>Discord </Link> server to stay updated.</Text>
                                 <Img src={game} width={{ base: '80px', md: '100px' }} className="gameover" alt="Game over icon" />
                             </Flex>
                             <Link href="/" className="text-grayDark text-start flex items-center"><IoIosArrowRoundBack />Return to the registration</Link>
