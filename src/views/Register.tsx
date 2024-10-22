@@ -448,7 +448,7 @@ export default function Register() {
             data.append("Experience", formData.Experience);
             data.append("Message", formData.Message);
 
-            const sheetUrl = "https://script.google.com/macros/s/AKfycbwZZYBgsmvlSEDEPtpSzWHyR7-m6c9vgzR_fgQGeG7HtPrOv4Dfo1W2PLAUgHuZqmPtSQ/exec";
+            const sheetUrl = "https://script.google.com/macros/s/AKfycbyk2R5bullxDm9t8tOFycWFaIjOhWLHnN58hNGlB2OnHVQ-64C8RR9SbUziAYtqtxfU_g/exec";
 
             try {
                 console.log("Sending data to server...");
