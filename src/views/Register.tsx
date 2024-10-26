@@ -488,321 +488,321 @@ export default function Register() {
             }
         }
     };
-    const renderMainContent = () => (
-        <ChakraProvider>
-            <Flex direction={'column'} width={'100%'} alignItems={'center'} py={4} justify={'center'} minHeight={'100vh'} background={{ base: '#016FB9', md: 'transparent' }}>
-                <Flex display={{ base: 'none', md: 'flex' }}>
-                    <Flex className="bg-element" position="absolute" bottom={0} left="-10%" borderRadius="50%" width="60vw" height="90vh" zIndex={-1}></Flex>
-                    <Flex className="bg-element" position="absolute" left={0} top="-20" borderRadius="50%" width="80vw" height="50vh" zIndex={-1}></Flex>
-                    <Flex className="bg-element" position="absolute" bottom={0} borderRadius="50%" width="70vw" height="100vh" zIndex={-1}></Flex>
-                </Flex>
+    // const renderMainContent = () => (
+    //     <ChakraProvider>
+    //         <Flex direction={'column'} width={'100%'} alignItems={'center'} py={4} justify={'center'} minHeight={'100vh'} background={{ base: '#016FB9', md: 'transparent' }}>
+    //             <Flex display={{ base: 'none', md: 'flex' }}>
+    //                 <Flex className="bg-element" position="absolute" bottom={0} left="-10%" borderRadius="50%" width="60vw" height="90vh" zIndex={-1}></Flex>
+    //                 <Flex className="bg-element" position="absolute" left={0} top="-20" borderRadius="50%" width="80vw" height="50vh" zIndex={-1}></Flex>
+    //                 <Flex className="bg-element" position="absolute" bottom={0} borderRadius="50%" width="70vw" height="100vh" zIndex={-1}></Flex>
+    //             </Flex>
 
-                <Heading as="h1" size="xl" color={'#ffffff'} fontFamily={'Exo 2'} textAlign="center" my={5}>
-                    ESC club registration
-                </Heading>
-                {step !== 4 && (<Flex width={{ base: '100%', md: '70%' }} paddingX={'40px'} className="justify-between items-center" mb={10} gap={{ base: '2%', md: '4%' }}>
-                    <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 0 ? '#FF9300' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
-                    <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 1 ? '#D60002' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
-                    <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 2 ? '#00D44A' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
-                    <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 3 ? '#016FB9' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
-                </Flex>)}
-                <form onSubmit={handleSubmit} style={{ transition: "opacity 0.5s ease-in-out" }} className="w-full flex flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10 ">
-                    {step === 0 && (
-                        <Flex style={{ transition: "opacity 0.5s ease-in-out" }} direction={'column'}>
-                            <Heading ref={ExplainRef} as={'h1'} size={'md'} fontFamily={'Exo 2'} color={'#000'} textAlign={'center'} mb={5}>Complete the form below to become one of the ESCC family</Heading>
-                            <Flex justify={'space-around'}>
-                                <Flex direction="column" gap={6} width={{ base: "100%", md: "50%" }} justify={'center'} maxWidth={'550px'} padding={6}>
-                                    <Flex ref={leftElement1} direction="column" gap={6} width={"100%"} maxWidth={'550px'} padding={{ base: 1, lg: 6 }}>
-                                        <FormControl isRequired ref={firstNameRef}>
-                                            <FormLabel color={'#fff'}>First name</FormLabel>
-                                            <Input
+    //             <Heading as="h1" size="xl" color={'#ffffff'} fontFamily={'Exo 2'} textAlign="center" my={5}>
+    //                 ESC club registration
+    //             </Heading>
+    //             {step !== 4 && (<Flex width={{ base: '100%', md: '70%' }} paddingX={'40px'} className="justify-between items-center" mb={10} gap={{ base: '2%', md: '4%' }}>
+    //                 <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 0 ? '#FF9300' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
+    //                 <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 1 ? '#D60002' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
+    //                 <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 2 ? '#00D44A' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
+    //                 <Flex alignItems={'center'} justify={'center'} borderRadius={'20px'} width={{ base: '20%', md: '28%' }} height={{ base: '8px', md: '10px' }} background={`${step >= 3 ? '#016FB9' : '#ffffff'} `} border={'.1px solid #fff'}></Flex>
+    //             </Flex>)}
+    //             <form onSubmit={handleSubmit} style={{ transition: "opacity 0.5s ease-in-out" }} className="w-full flex flex-col gap-4 p-4 md:p-6 lg:p-8 xl:p-10 ">
+    //                 {step === 0 && (
+    //                     <Flex style={{ transition: "opacity 0.5s ease-in-out" }} direction={'column'}>
+    //                         <Heading ref={ExplainRef} as={'h1'} size={'md'} fontFamily={'Exo 2'} color={'#000'} textAlign={'center'} mb={5}>Complete the form below to become one of the ESCC family</Heading>
+    //                         <Flex justify={'space-around'}>
+    //                             <Flex direction="column" gap={6} width={{ base: "100%", md: "50%" }} justify={'center'} maxWidth={'550px'} padding={6}>
+    //                                 <Flex ref={leftElement1} direction="column" gap={6} width={"100%"} maxWidth={'550px'} padding={{ base: 1, lg: 6 }}>
+    //                                     <FormControl isRequired ref={firstNameRef}>
+    //                                         <FormLabel color={'#fff'}>First name</FormLabel>
+    //                                         <Input
 
-                                                placeholder="Enter Your First Name"
-                                                name="FirstName"
-                                                value={formData.FirstName}
-                                                onChange={handleChange}
-                                                background={'#ffffff'}
-                                                border={`1px solid ${errors.FirstName ? 'red' : 'none'}`}
-                                            />
-                                            {errors.FirstName && <Text color="red">{errors.FirstName}</Text>}
-                                        </FormControl>
-                                        <FormControl isRequired ref={lastNameRef}>
-                                            <FormLabel color={'#fff'}>Family name</FormLabel>
-                                            <Input
+    //                                             placeholder="Enter Your First Name"
+    //                                             name="FirstName"
+    //                                             value={formData.FirstName}
+    //                                             onChange={handleChange}
+    //                                             background={'#ffffff'}
+    //                                             border={`1px solid ${errors.FirstName ? 'red' : 'none'}`}
+    //                                         />
+    //                                         {errors.FirstName && <Text color="red">{errors.FirstName}</Text>}
+    //                                     </FormControl>
+    //                                     <FormControl isRequired ref={lastNameRef}>
+    //                                         <FormLabel color={'#fff'}>Family name</FormLabel>
+    //                                         <Input
 
-                                                placeholder="Enter your Last name"
-                                                name="LastName"
-                                                value={formData.LastName}
-                                                onChange={handleChange}
-                                                background={'#ffffff'}
-                                                border={`1px solid ${errors.LastName ? 'red' : 'none'}`}
-                                            />
-                                            {errors.LastName && <Text color="red">{errors.LastName}</Text>}
-                                        </FormControl>
-                                        <FormControl isRequired ref={emailRef}>
-                                            <FormLabel color={'#fff'}>Email</FormLabel>
-                                            <Input
+    //                                             placeholder="Enter your Last name"
+    //                                             name="LastName"
+    //                                             value={formData.LastName}
+    //                                             onChange={handleChange}
+    //                                             background={'#ffffff'}
+    //                                             border={`1px solid ${errors.LastName ? 'red' : 'none'}`}
+    //                                         />
+    //                                         {errors.LastName && <Text color="red">{errors.LastName}</Text>}
+    //                                     </FormControl>
+    //                                     <FormControl isRequired ref={emailRef}>
+    //                                         <FormLabel color={'#fff'}>Email</FormLabel>
+    //                                         <Input
 
-                                                placeholder="enter your Email (preferably the school one)"
-                                                name="Email"
-                                                value={formData.Email}
-                                                onChange={handleChange}
-                                                type="email"
-                                                background={'#ffffff'}
-                                                border={`1px solid ${errors.Email ? 'red' : 'none'}`}
-                                            />
-                                            {errors.Email && <Text color="red">{errors.Email}</Text>}
-                                        </FormControl>
-                                        <FormControl ref={schoolRef} isRequired>
-                                            <FormLabel color={'#fff'}>School</FormLabel>
-                                            <Select
-                                                placeholder='Select your school'
-                                                name="School"
-                                                value={formData.School}
-                                                onChange={(e) => setFormData(prev => ({ ...prev, School: e.target.value }))}
-                                                background={'#fff'}
-                                                border={errors.School ? '1px solid red' : 'none'}
-                                                defaultValue={'ENSIA'}
-                                            >
-                                                <option value='ESNN'>ESNN</option>
-                                                <option value='ENSA'>ENSA</option>
-                                                <option value='NHSM'>NHSM</option>
-                                                <option value='ENSIA'>ENSIA</option>
-                                                <option value='NHSC'>NHSC</option>
-                                            </Select>
-                                            {errors.School && <Text color="red">{errors.School}</Text>}
-                                        </FormControl>
-                                        <FormControl ref={phoneRef}>
-                                            <FormLabel color={'#fff'}>Phone Number</FormLabel>
-                                            <Input
-                                                placeholder="Enter your Phone number (0---------)"
-                                                name="Phone"
-                                                value={formData.Phone}
-                                                onChange={handleChange}
-                                                type="tel"
-                                                background={'#ffffff'}
-                                            />
-                                            {errors.Phone && <Text color="red">{errors.Phone}</Text>}
-                                        </FormControl>
-                                        <FormControl ref={discordRef}>
-                                            <FormLabel color={'#fff'}>Discord ID</FormLabel>
-                                            <Input
+    //                                             placeholder="enter your Email (preferably the school one)"
+    //                                             name="Email"
+    //                                             value={formData.Email}
+    //                                             onChange={handleChange}
+    //                                             type="email"
+    //                                             background={'#ffffff'}
+    //                                             border={`1px solid ${errors.Email ? 'red' : 'none'}`}
+    //                                         />
+    //                                         {errors.Email && <Text color="red">{errors.Email}</Text>}
+    //                                     </FormControl>
+    //                                     <FormControl ref={schoolRef} isRequired>
+    //                                         <FormLabel color={'#fff'}>School</FormLabel>
+    //                                         <Select
+    //                                             placeholder='Select your school'
+    //                                             name="School"
+    //                                             value={formData.School}
+    //                                             onChange={(e) => setFormData(prev => ({ ...prev, School: e.target.value }))}
+    //                                             background={'#fff'}
+    //                                             border={errors.School ? '1px solid red' : 'none'}
+    //                                             defaultValue={'ENSIA'}
+    //                                         >
+    //                                             <option value='ESNN'>ESNN</option>
+    //                                             <option value='ENSA'>ENSA</option>
+    //                                             <option value='NHSM'>NHSM</option>
+    //                                             <option value='ENSIA'>ENSIA</option>
+    //                                             <option value='NHSC'>NHSC</option>
+    //                                         </Select>
+    //                                         {errors.School && <Text color="red">{errors.School}</Text>}
+    //                                     </FormControl>
+    //                                     <FormControl ref={phoneRef}>
+    //                                         <FormLabel color={'#fff'}>Phone Number</FormLabel>
+    //                                         <Input
+    //                                             placeholder="Enter your Phone number (0---------)"
+    //                                             name="Phone"
+    //                                             value={formData.Phone}
+    //                                             onChange={handleChange}
+    //                                             type="tel"
+    //                                             background={'#ffffff'}
+    //                                         />
+    //                                         {errors.Phone && <Text color="red">{errors.Phone}</Text>}
+    //                                     </FormControl>
+    //                                     <FormControl ref={discordRef}>
+    //                                         <FormLabel color={'#fff'}>Discord ID</FormLabel>
+    //                                         <Input
 
-                                                placeholder="Enter your Discord ID"
-                                                name="DiscordId"
-                                                value={formData.DiscordId}
-                                                onChange={handleChange}
-                                                background={'#ffffff'}
-                                            />
-                                            {errors.DiscordId && <Text color="red">{errors.DiscordId}</Text>}
-                                            <FormHelperText>
-                                                Can't find your Discord ID?{" "}
-                                                <a
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID"
-                                                >
-                                                    Visit Discord support
-                                                </a>
-                                            </FormHelperText>
-                                        </FormControl>
-                                    </Flex>
-                                    <Button ref={btnElement1} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="orange" alignSelf={'end'} color={'#fff'} >Next</Button>
-                                </Flex>
-                                <img ref={BasketballRRef} className="hidden md:flex max-h-[700px]" src={Basketr} />
-                            </Flex>
-                        </Flex>
-                    )}
-                    {step === 1 && (
-                        <Flex style={{ transition: "opacity 0.5s ease-in-out" }} width={'100%'} direction={{ base: 'column', md: 'row' }}>
-                            <Flex direction={'column'} width={{ base: '100%', md: '50%' }} >
-                                <FormControl ref={leftElement2} isRequired opacity={0}> {/* Adjust opacity if needed */}
-                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>
-                                        Choose Your First Department
-                                    </FormLabel>
-                                    <RadioGroup
-                                        name="Dep1"
-                                        value={formData.Dep1}
-                                        onChange={(value) => setFormData(prev => ({ ...prev, Dep1: value }))}
-                                    >
-                                        <Stack direction={'column'} textColor={'#FFF'} fontSize={'xl'}>
-                                            {Departments.map((dep) => (
-                                                <Radio
-                                                    key={dep.title}
-                                                    colorScheme="red"
-                                                    value={dep.title}
-                                                >
-                                                    {dep.title}
-                                                </Radio>
-                                            ))}
-                                        </Stack>
-                                    </RadioGroup>
-                                    {errors.Dep1 && <Text color="red">{errors.Dep1}</Text>}
-                                </FormControl>
-                                <img ref={bottomElement2} src={Books} style={{ maxWidth: '400px', alignSelf: 'end', opacity: 0 }} className="hidden md:flex w-[100px]" />
-                            </Flex>
-                            <Flex direction={'column'} gap={'40px'} justify={"space-between"} width={{ base: '100%', md: '50%' }}>
-                                <FormControl ref={rightElement2} opacity={0}>
-                                    <FormLabel color={'#fff'} fontSize={'2xl'} textAlign={{ base: 'center', md: 'start' }}>Why do you choose this department</FormLabel>
-                                    <Textarea
-                                        ref={rightElement2Text}
-                                        name="Dep1Reason"
-                                        value={formData.Dep1Reason}
-                                        onChange={handleChange}
-                                        placeholder="Enter your answer"
-                                        background={'#ffffff'}
-                                        borderRadius={'30px'}
-                                        maxWidth={'500px'}
-                                        height={'250px'}
-                                        border={`solid ${errors.Dep1Reason ? '2px red' : 'red 1px'}`}
-                                    />
-                                    {errors.Dep1Reason && <Text color="red">{errors.Dep1Reason}</Text>}
-                                </FormControl>
-                                <Button ref={btnElement2} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="red" alignSelf={'center'} color={'#fff'} >Next</Button>
-                            </Flex>
-                        </Flex>
-                    )}
-                    {step === 2 && (
-                        <Flex style={{ transition: "opacity 0.5s ease-in-out" }} width={'100%'} direction={{ base: 'column', md: 'row' }}>
-                            <Flex direction={'column'} justifyContent={'space-between'} width={{ base: '100%', md: '50%' }}>
-                                <FormControl ref={leftElement3} opacity={0}>
-                                    <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>Choose Your Second Department <span className="text-sm text-grayLight">Press next to skip</span></FormLabel>
-                                    <RadioGroup
-                                        name="Dep2"
-                                        value={formData.Dep2}
-                                        onChange={(value) => setFormData(prev => ({ ...prev, Dep2: value }))}
-                                    >
-                                        <Stack direction={'column'} textColor={'#FFF'} fontSize={'xl'}>
-                                            {Departments.map((dep) => (
-                                                <Radio
-                                                    key={dep.title}
-                                                    colorScheme="red"
-                                                    value={dep.title}
-                                                >
-                                                    {dep.title}
-                                                </Radio>
-                                            ))}
-                                        </Stack>
-                                    </RadioGroup>
-                                    {errors.Dep2 && <Text color="red">{errors.Dep2}</Text>}
-                                </FormControl>
-                                <Button ref={btn3Ref} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="green" alignSelf={'end'} color={'#fff'} className="hidden md:flex">Next</Button>
-                            </Flex>
-                            <Flex direction={'column'} alignItems={'center'} justifyContent={'center'} gap={'40px'} width={{ base: '100%', md: '50%' }} >
-                                <FormControl ref={rightElement3} opacity={0}>
-                                    <FormLabel color={'#fff'} fontSize={'2xl'}>Why do you choose this department</FormLabel>
-                                    <Textarea
-                                        name="Dep2Reason"
-                                        value={formData.Dep2Reason}
-                                        onChange={handleChange}
-                                        placeholder="Enter your answer"
-                                        background={'#ffffff'}
-                                        borderRadius={'30px'}
-                                        maxWidth={'500px'}
-                                        height={'150px'}
-                                        border={`solid ${errors.Dep2Reason ? '2px red' : '1px #00D44A'}`}
+    //                                             placeholder="Enter your Discord ID"
+    //                                             name="DiscordId"
+    //                                             value={formData.DiscordId}
+    //                                             onChange={handleChange}
+    //                                             background={'#ffffff'}
+    //                                         />
+    //                                         {errors.DiscordId && <Text color="red">{errors.DiscordId}</Text>}
+    //                                         <FormHelperText>
+    //                                             Can't find your Discord ID?{" "}
+    //                                             <a
+    //                                                 target="_blank"
+    //                                                 rel="noopener noreferrer"
+    //                                                 href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID"
+    //                                             >
+    //                                                 Visit Discord support
+    //                                             </a>
+    //                                         </FormHelperText>
+    //                                     </FormControl>
+    //                                 </Flex>
+    //                                 <Button ref={btnElement1} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="orange" alignSelf={'end'} color={'#fff'} >Next</Button>
+    //                             </Flex>
+    //                             <img ref={BasketballRRef} className="hidden md:flex max-h-[700px]" src={Basketr} />
+    //                         </Flex>
+    //                     </Flex>
+    //                 )}
+    //                 {step === 1 && (
+    //                     <Flex style={{ transition: "opacity 0.5s ease-in-out" }} width={'100%'} direction={{ base: 'column', md: 'row' }}>
+    //                         <Flex direction={'column'} width={{ base: '100%', md: '50%' }} >
+    //                             <FormControl ref={leftElement2} isRequired opacity={0}> {/* Adjust opacity if needed */}
+    //                                 <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>
+    //                                     Choose Your First Department
+    //                                 </FormLabel>
+    //                                 <RadioGroup
+    //                                     name="Dep1"
+    //                                     value={formData.Dep1}
+    //                                     onChange={(value) => setFormData(prev => ({ ...prev, Dep1: value }))}
+    //                                 >
+    //                                     <Stack direction={'column'} textColor={'#FFF'} fontSize={'xl'}>
+    //                                         {Departments.map((dep) => (
+    //                                             <Radio
+    //                                                 key={dep.title}
+    //                                                 colorScheme="red"
+    //                                                 value={dep.title}
+    //                                             >
+    //                                                 {dep.title}
+    //                                             </Radio>
+    //                                         ))}
+    //                                     </Stack>
+    //                                 </RadioGroup>
+    //                                 {errors.Dep1 && <Text color="red">{errors.Dep1}</Text>}
+    //                             </FormControl>
+    //                             <img ref={bottomElement2} src={Books} style={{ maxWidth: '400px', alignSelf: 'end', opacity: 0 }} className="hidden md:flex w-[100px]" />
+    //                         </Flex>
+    //                         <Flex direction={'column'} gap={'40px'} justify={"space-between"} width={{ base: '100%', md: '50%' }}>
+    //                             <FormControl ref={rightElement2} opacity={0}>
+    //                                 <FormLabel color={'#fff'} fontSize={'2xl'} textAlign={{ base: 'center', md: 'start' }}>Why do you choose this department</FormLabel>
+    //                                 <Textarea
+    //                                     ref={rightElement2Text}
+    //                                     name="Dep1Reason"
+    //                                     value={formData.Dep1Reason}
+    //                                     onChange={handleChange}
+    //                                     placeholder="Enter your answer"
+    //                                     background={'#ffffff'}
+    //                                     borderRadius={'30px'}
+    //                                     maxWidth={'500px'}
+    //                                     height={'250px'}
+    //                                     border={`solid ${errors.Dep1Reason ? '2px red' : 'red 1px'}`}
+    //                                 />
+    //                                 {errors.Dep1Reason && <Text color="red">{errors.Dep1Reason}</Text>}
+    //                             </FormControl>
+    //                             <Button ref={btnElement2} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="red" alignSelf={'center'} color={'#fff'} >Next</Button>
+    //                         </Flex>
+    //                     </Flex>
+    //                 )}
+    //                 {step === 2 && (
+    //                     <Flex style={{ transition: "opacity 0.5s ease-in-out" }} width={'100%'} direction={{ base: 'column', md: 'row' }}>
+    //                         <Flex direction={'column'} justifyContent={'space-between'} width={{ base: '100%', md: '50%' }}>
+    //                             <FormControl ref={leftElement3} opacity={0}>
+    //                                 <FormLabel color="#fff" fontSize="2xl" alignSelf={'center'} textAlign={{ base: 'center', md: 'start' }}>Choose Your Second Department <span className="text-sm text-grayLight">Press next to skip</span></FormLabel>
+    //                                 <RadioGroup
+    //                                     name="Dep2"
+    //                                     value={formData.Dep2}
+    //                                     onChange={(value) => setFormData(prev => ({ ...prev, Dep2: value }))}
+    //                                 >
+    //                                     <Stack direction={'column'} textColor={'#FFF'} fontSize={'xl'}>
+    //                                         {Departments.map((dep) => (
+    //                                             <Radio
+    //                                                 key={dep.title}
+    //                                                 colorScheme="red"
+    //                                                 value={dep.title}
+    //                                             >
+    //                                                 {dep.title}
+    //                                             </Radio>
+    //                                         ))}
+    //                                     </Stack>
+    //                                 </RadioGroup>
+    //                                 {errors.Dep2 && <Text color="red">{errors.Dep2}</Text>}
+    //                             </FormControl>
+    //                             <Button ref={btn3Ref} onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="green" alignSelf={'end'} color={'#fff'} className="hidden md:flex">Next</Button>
+    //                         </Flex>
+    //                         <Flex direction={'column'} alignItems={'center'} justifyContent={'center'} gap={'40px'} width={{ base: '100%', md: '50%' }} >
+    //                             <FormControl ref={rightElement3} opacity={0}>
+    //                                 <FormLabel color={'#fff'} fontSize={'2xl'}>Why do you choose this department</FormLabel>
+    //                                 <Textarea
+    //                                     name="Dep2Reason"
+    //                                     value={formData.Dep2Reason}
+    //                                     onChange={handleChange}
+    //                                     placeholder="Enter your answer"
+    //                                     background={'#ffffff'}
+    //                                     borderRadius={'30px'}
+    //                                     maxWidth={'500px'}
+    //                                     height={'150px'}
+    //                                     border={`solid ${errors.Dep2Reason ? '2px red' : '1px #00D44A'}`}
 
-                                    />
-                                    {errors.Dep2Reason && <Text color="red">{errors.Dep2Reason}</Text>}
-                                </FormControl>
-                                <img ref={Img3Ref} src={Health1} style={{ maxWidth: '400px', alignSelf: 'center' }} className="hidden md:flex w-[100px]" />
-                                <Button onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="green" alignSelf={'end'} color={'#fff'} hidden>Next</Button>
-                            </Flex>
-                        </Flex>
-                    )}
-                    {step === 3 && (
-                        <Flex justify={"space-around"} style={{ transition: "opacity 0.5s ease-in-out" }}>
-                            <img ref={Img4Ref} src={FootballPlayer} alt="Football player" className="hidden md:flex w-1/2" />
-                            <Flex direction="column" gap={6} width={{ base: '100%', md: '50%' }}>
-                                <FormControl isRequired ref={rightElement41Ref}>
-                                    <FormLabel color={'#fff'}>What motivates you to join the club?</FormLabel>
-                                    <Textarea
-                                        name="Motivation"
-                                        value={formData.Motivation}
-                                        onChange={handleChange}
-                                        placeholder="Share your thoughts"
-                                        background={'#ffffff'}
-                                        borderRadius={'30px'}
-                                        maxWidth={'500px'}
-                                        height={'120px'}
-                                        border={`2px solid ${errors.Motivation ? 'red' : '#016FB9'}`}
-                                    />
-                                    {errors.Motivation && <Text color="red">{errors.Motivation}</Text>}
-                                </FormControl>
-                                <FormControl ref={rightElement42Ref}>
-                                    <FormLabel color={'#fff'}>Have you been an athlete before?</FormLabel>
-                                    <Textarea
-                                        name="Experience"
-                                        value={formData.Experience}
-                                        onChange={handleChange}
-                                        placeholder="Share any experience you have"
-                                        background={'#ffffff'}
-                                        border={'2px'}
-                                        borderColor={'#016FB9'}
-                                        borderRadius={'30px'}
-                                        maxWidth={'500px'}
-                                        height={'120px'}
-                                    />
-                                    {errors.Experience && <Text color="red">{errors.Experience}</Text>}
-                                </FormControl>
-                                <FormControl ref={rightElement43Ref}>
-                                    <FormLabel color={'#fff'}>Any addition you want to add?</FormLabel>
-                                    <Textarea
-                                        name="Message"
-                                        value={formData.Message}
-                                        onChange={handleChange}
-                                        placeholder="What's in your mind"
-                                        background={'#ffffff'}
-                                        border={'2px'}
-                                        borderColor={'#016FB9'}
-                                        borderRadius={'30px'}
-                                        maxWidth={'500px'}
-                                        height={'120px'}
-                                    />
-                                    {errors.Message && <Text color="red">{errors.Message}</Text>}
-                                </FormControl>
-                                <Button borderRadius={'30px'} maxWidth={'500px'} type="submit" colorScheme="blue" isLoading={loading}>
-                                    {loading ? <Spinner size="sm" /> : "Register"}
-                                </Button>
-                            </Flex>
-                        </Flex>
-                    )}
-                    {step === 4 && (
-                        <Flex direction="column" className="bg-white self-center" padding={{ base: '10px', md: '20px', lg: '25px' }} borderRadius={{ base: '25px', md: '40px' }} gap={'10px'} width={{ base: '80%', md: '400px', lg: '600px', xl: '50%' }} alignSelf={'center'}>
-                            <Flex direction="column" className="md:text-lg text-black text-center" gap={'10px'} justify={'center'} alignItems={'center'}>
-                                <Text fontWeight={'bold'} fontSize={'xl'} color="green">Congratulations!</Text>
-                                <h2>Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊</h2>
-                                <Text>Feel free to visit our <Link href="https://www.instagram.com/ensia.sport.culture.club" target="_blank" color={'orange.500'} fontWeight={'bold'}>Instagram</Link> account and <Link href={'https://discord.gg/px6CnQUb'} target="_blank" color={'orange.500'} fontWeight={'bold'}>Discord </Link> server to stay updated.</Text>
-                                <Img src={game} width={{ base: '80px', md: '100px' }} className="" alt="Game over icon" />
-                            </Flex>
-                            <Link href="/" className="text-grayDark text-start flex items-center"><IoIosArrowRoundBack />Return to the registration</Link>
-                        </Flex>
+    //                                 />
+    //                                 {errors.Dep2Reason && <Text color="red">{errors.Dep2Reason}</Text>}
+    //                             </FormControl>
+    //                             <img ref={Img3Ref} src={Health1} style={{ maxWidth: '400px', alignSelf: 'center' }} className="hidden md:flex w-[100px]" />
+    //                             <Button onClick={handleNext} width={'150px'} borderRadius={'30px'} colorScheme="green" alignSelf={'end'} color={'#fff'} hidden>Next</Button>
+    //                         </Flex>
+    //                     </Flex>
+    //                 )}
+    //                 {step === 3 && (
+    //                     <Flex justify={"space-around"} style={{ transition: "opacity 0.5s ease-in-out" }}>
+    //                         <img ref={Img4Ref} src={FootballPlayer} alt="Football player" className="hidden md:flex w-1/2" />
+    //                         <Flex direction="column" gap={6} width={{ base: '100%', md: '50%' }}>
+    //                             <FormControl isRequired ref={rightElement41Ref}>
+    //                                 <FormLabel color={'#fff'}>What motivates you to join the club?</FormLabel>
+    //                                 <Textarea
+    //                                     name="Motivation"
+    //                                     value={formData.Motivation}
+    //                                     onChange={handleChange}
+    //                                     placeholder="Share your thoughts"
+    //                                     background={'#ffffff'}
+    //                                     borderRadius={'30px'}
+    //                                     maxWidth={'500px'}
+    //                                     height={'120px'}
+    //                                     border={`2px solid ${errors.Motivation ? 'red' : '#016FB9'}`}
+    //                                 />
+    //                                 {errors.Motivation && <Text color="red">{errors.Motivation}</Text>}
+    //                             </FormControl>
+    //                             <FormControl ref={rightElement42Ref}>
+    //                                 <FormLabel color={'#fff'}>Have you been an athlete before?</FormLabel>
+    //                                 <Textarea
+    //                                     name="Experience"
+    //                                     value={formData.Experience}
+    //                                     onChange={handleChange}
+    //                                     placeholder="Share any experience you have"
+    //                                     background={'#ffffff'}
+    //                                     border={'2px'}
+    //                                     borderColor={'#016FB9'}
+    //                                     borderRadius={'30px'}
+    //                                     maxWidth={'500px'}
+    //                                     height={'120px'}
+    //                                 />
+    //                                 {errors.Experience && <Text color="red">{errors.Experience}</Text>}
+    //                             </FormControl>
+    //                             <FormControl ref={rightElement43Ref}>
+    //                                 <FormLabel color={'#fff'}>Any addition you want to add?</FormLabel>
+    //                                 <Textarea
+    //                                     name="Message"
+    //                                     value={formData.Message}
+    //                                     onChange={handleChange}
+    //                                     placeholder="What's in your mind"
+    //                                     background={'#ffffff'}
+    //                                     border={'2px'}
+    //                                     borderColor={'#016FB9'}
+    //                                     borderRadius={'30px'}
+    //                                     maxWidth={'500px'}
+    //                                     height={'120px'}
+    //                                 />
+    //                                 {errors.Message && <Text color="red">{errors.Message}</Text>}
+    //                             </FormControl>
+    //                             <Button borderRadius={'30px'} maxWidth={'500px'} type="submit" colorScheme="blue" isLoading={loading}>
+    //                                 {loading ? <Spinner size="sm" /> : "Register"}
+    //                             </Button>
+    //                         </Flex>
+    //                     </Flex>
+    //                 )}
+    //                 {step === 4 && (
+    //                     <Flex direction="column" className="bg-white self-center" padding={{ base: '10px', md: '20px', lg: '25px' }} borderRadius={{ base: '25px', md: '40px' }} gap={'10px'} width={{ base: '80%', md: '400px', lg: '600px', xl: '50%' }} alignSelf={'center'}>
+    //                         <Flex direction="column" className="md:text-lg text-black text-center" gap={'10px'} justify={'center'} alignItems={'center'}>
+    //                             <Text fontWeight={'bold'} fontSize={'xl'} color="green">Congratulations!</Text>
+    //                             <h2>Your information has been recorded successfully! Check your email daily to hear about your acceptance 😊</h2>
+    //                             <Text>Feel free to visit our <Link href="https://www.instagram.com/ensia.sport.culture.club" target="_blank" color={'orange.500'} fontWeight={'bold'}>Instagram</Link> account and <Link href={'https://discord.gg/px6CnQUb'} target="_blank" color={'orange.500'} fontWeight={'bold'}>Discord </Link> server to stay updated.</Text>
+    //                             <Img src={game} width={{ base: '80px', md: '100px' }} className="" alt="Game over icon" />
+    //                         </Flex>
+    //                         <Link href="/" className="text-grayDark text-start flex items-center"><IoIosArrowRoundBack />Return to the registration</Link>
+    //                     </Flex>
 
-                    )}
-                </form>
-                {error && (
-                    <Flex className="fixed" maxWidth={'100%'} top={20}>{/*TODO*/}
-                        <Alert status='error' >
-                            <AlertIcon />
-                            <Box>
-                                <AlertTitle>Error!</AlertTitle>
-                                <AlertDescription>
-                                    {error}
-                                </AlertDescription>
-                            </Box>
-                            <CloseButton
-                                alignSelf='flex-start'
-                                position='relative'
-                                right={-1}
-                                top={-1}
-                                onClick={() => { setError(null); window.location.reload(); }}
-                            />
-                        </Alert>
-                    </Flex>
-                )}
-            </Flex>
-        </ChakraProvider >
-    );
+    //                 )}
+    //             </form>
+    //             {error && (
+    //                 <Flex className="fixed" maxWidth={'100%'} top={20}>{/*TODO*/}
+    //                     <Alert status='error' >
+    //                         <AlertIcon />
+    //                         <Box>
+    //                             <AlertTitle>Error!</AlertTitle>
+    //                             <AlertDescription>
+    //                                 {error}
+    //                             </AlertDescription>
+    //                         </Box>
+    //                         <CloseButton
+    //                             alignSelf='flex-start'
+    //                             position='relative'
+    //                             right={-1}
+    //                             top={-1}
+    //                             onClick={() => { setError(null); window.location.reload(); }}
+    //                         />
+    //                     </Alert>
+    //                 </Flex>
+    //             )}
+    //         </Flex>
+    //     </ChakraProvider >
+    // );
     return (
         <>
             {/* {
