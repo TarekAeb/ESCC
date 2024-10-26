@@ -15,7 +15,7 @@ const Close = ()=>{
     return (
         <Flex style={{ background: '#004FB9' }} className="w-[100vw] h-[100vh] flex flex-col justify-center items-center text-xl">
                 <Lottie options={defaultOptions} height={350} width={350} />
-                <Text color="white" textAlign={'center'} padding={1}>The registration are closed</Text>
+                <Text color="white" textAlign={'center'} padding={1}>Registration are closed</Text>
             </Flex>
     )
 }
