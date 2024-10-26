@@ -24,13 +24,13 @@ import {
     Link,
     Img
 } from "@chakra-ui/react";
-// import Lottie from 'react-lottie';
+import Lottie from 'react-lottie';
 import { Departments } from "../constants";
 import { Basketr, Books, FootballPlayer, game, Health1 } from "../utils";
 import { gsap } from "gsap/gsap-core";
 import { useGSAP } from "@gsap/react";
 // import CurrentTime from "../components/waiting.js";
-// import animationData from "../../public/assets/animate.json";
+import animationData from "../../public/assets/animate.json";
 import { IoIosArrowRoundBack } from "react-icons/io";
 interface FormData {
     FirstName: string;
@@ -48,14 +48,14 @@ interface FormData {
     Message: string;
 }
 export default function Register() {
-    // const defaultOptions = {
-    //     loop: true, // Loop the animation
-    //     autoplay: true, // Start playing the animation
-    //     animationData: animationData, // The JSON animation data
-    //     rendererSettings: {
-    //         preserveAspectRatio: 'xMidYMid slice', // Preserve aspect ratio
-    //     },
-    // };
+    const defaultOptions = {
+        loop: true, // Loop the animation
+        autoplay: true, // Start playing the animation
+        animationData: animationData, // The JSON animation data
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice', // Preserve aspect ratio
+        },
+    };
     // const targetDate = useMemo(() => new Date('2024-10-09T14:30:00'), []);
     // const [isCountdownFinished, setIsCountdownFinished] = useState(false);
     // useEffect(() => {
@@ -815,7 +815,11 @@ export default function Register() {
                         </Flex>
                     </ChakraProvider>
             } */}
-            {renderMainContent()}
+            {/*renderMainContent()*/}
+            <Flex style={{ background: '#004FB9' }} className="w-[100vw] h-[100vh] flex flex-col justify-center items-center text-xl">
+                <Lottie options={defaultOptions} height={350} width={350} />
+                <Text color="white" textAlign={'center'} padding={1}>The registration are closed</Text>
+            </Flex>
         </>
     )
 }
