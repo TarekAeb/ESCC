@@ -2,7 +2,7 @@ import Lenis from '@studio-freight/lenis';
 import { useGSAP } from '@gsap/react';
 // import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import LandingPage from './views/LandingPage';
+import LandingPage from './views/LandingPage';
 import Register from './views/Register';
 import Close from './views/RegistrationClosed';
 // import { useState } from 'react';
@@ -36,8 +36,10 @@ const App = () => {
     <Router>
       {/* {showLoader ? <Loader /> : ( */}
         <Routes>
+          <Route path='/home' element={<LandingPage />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/registration-closed' element={<Close />} />
           <Route path='/' element={<Register />} />
-          {/* <Route path='/' element={<Close />} /> */}
         </Routes>
       {/* )} */}
     </Router>
