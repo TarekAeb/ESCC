@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 // import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import LandingPage from './views/LandingPage';
-// import Register from './views/Register';
+import Register from './views/Register';
 import Close from './views/RegistrationClosed';
 // import { useState } from 'react';
 // import Loader from './components/Loader';
@@ -36,8 +36,8 @@ const App = () => {
     <Router>
       {/* {showLoader ? <Loader /> : ( */}
         <Routes>
-          {/* <Route path='/' element={<LandingPage />} /> */}
-          <Route path='/' element={<Close />} />
+          <Route path='/' element={<Register />} />
+          {/* <Route path='/' element={<Close />} /> */}
         </Routes>
       {/* )} */}
     </Router>
